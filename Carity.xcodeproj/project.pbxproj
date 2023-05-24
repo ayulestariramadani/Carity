@@ -1,0 +1,582 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5A945F852A1E024A00D0B60B /* CarityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A945F842A1E024A00D0B60B /* CarityApp.swift */; };
+		5A945F872A1E024A00D0B60B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A945F862A1E024A00D0B60B /* ContentView.swift */; };
+		5A945F892A1E024B00D0B60B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A945F882A1E024B00D0B60B /* Assets.xcassets */; };
+		5A945F8C2A1E024B00D0B60B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A945F8B2A1E024B00D0B60B /* Preview Assets.xcassets */; };
+		5A945F962A1E024C00D0B60B /* CarityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A945F952A1E024C00D0B60B /* CarityTests.swift */; };
+		5A945FA02A1E024C00D0B60B /* CarityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A945F9F2A1E024C00D0B60B /* CarityUITests.swift */; };
+		5A945FA22A1E024C00D0B60B /* CarityUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A945FA12A1E024C00D0B60B /* CarityUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5A945F922A1E024C00D0B60B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5A945F792A1E024A00D0B60B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5A945F802A1E024A00D0B60B;
+			remoteInfo = Carity;
+		};
+		5A945F9C2A1E024C00D0B60B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5A945F792A1E024A00D0B60B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5A945F802A1E024A00D0B60B;
+			remoteInfo = Carity;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5A945F812A1E024A00D0B60B /* Carity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Carity.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A945F842A1E024A00D0B60B /* CarityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarityApp.swift; sourceTree = "<group>"; };
+		5A945F862A1E024A00D0B60B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5A945F882A1E024B00D0B60B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5A945F8B2A1E024B00D0B60B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5A945F912A1E024C00D0B60B /* CarityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A945F952A1E024C00D0B60B /* CarityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarityTests.swift; sourceTree = "<group>"; };
+		5A945F9B2A1E024C00D0B60B /* CarityUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarityUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A945F9F2A1E024C00D0B60B /* CarityUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarityUITests.swift; sourceTree = "<group>"; };
+		5A945FA12A1E024C00D0B60B /* CarityUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarityUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5A945F7E2A1E024A00D0B60B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A945F8E2A1E024C00D0B60B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A945F982A1E024C00D0B60B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5A945F782A1E024A00D0B60B = {
+			isa = PBXGroup;
+			children = (
+				5A945F832A1E024A00D0B60B /* Carity */,
+				5A945F942A1E024C00D0B60B /* CarityTests */,
+				5A945F9E2A1E024C00D0B60B /* CarityUITests */,
+				5A945F822A1E024A00D0B60B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5A945F822A1E024A00D0B60B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5A945F812A1E024A00D0B60B /* Carity.app */,
+				5A945F912A1E024C00D0B60B /* CarityTests.xctest */,
+				5A945F9B2A1E024C00D0B60B /* CarityUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5A945F832A1E024A00D0B60B /* Carity */ = {
+			isa = PBXGroup;
+			children = (
+				5A945F842A1E024A00D0B60B /* CarityApp.swift */,
+				5A945F862A1E024A00D0B60B /* ContentView.swift */,
+				5A945F882A1E024B00D0B60B /* Assets.xcassets */,
+				5A945F8A2A1E024B00D0B60B /* Preview Content */,
+			);
+			path = Carity;
+			sourceTree = "<group>";
+		};
+		5A945F8A2A1E024B00D0B60B /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				5A945F8B2A1E024B00D0B60B /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5A945F942A1E024C00D0B60B /* CarityTests */ = {
+			isa = PBXGroup;
+			children = (
+				5A945F952A1E024C00D0B60B /* CarityTests.swift */,
+			);
+			path = CarityTests;
+			sourceTree = "<group>";
+		};
+		5A945F9E2A1E024C00D0B60B /* CarityUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5A945F9F2A1E024C00D0B60B /* CarityUITests.swift */,
+				5A945FA12A1E024C00D0B60B /* CarityUITestsLaunchTests.swift */,
+			);
+			path = CarityUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5A945F802A1E024A00D0B60B /* Carity */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A945FA52A1E024C00D0B60B /* Build configuration list for PBXNativeTarget "Carity" */;
+			buildPhases = (
+				5A945F7D2A1E024A00D0B60B /* Sources */,
+				5A945F7E2A1E024A00D0B60B /* Frameworks */,
+				5A945F7F2A1E024A00D0B60B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Carity;
+			productName = Carity;
+			productReference = 5A945F812A1E024A00D0B60B /* Carity.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5A945F902A1E024C00D0B60B /* CarityTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A945FA82A1E024C00D0B60B /* Build configuration list for PBXNativeTarget "CarityTests" */;
+			buildPhases = (
+				5A945F8D2A1E024C00D0B60B /* Sources */,
+				5A945F8E2A1E024C00D0B60B /* Frameworks */,
+				5A945F8F2A1E024C00D0B60B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5A945F932A1E024C00D0B60B /* PBXTargetDependency */,
+			);
+			name = CarityTests;
+			productName = CarityTests;
+			productReference = 5A945F912A1E024C00D0B60B /* CarityTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5A945F9A2A1E024C00D0B60B /* CarityUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A945FAB2A1E024C00D0B60B /* Build configuration list for PBXNativeTarget "CarityUITests" */;
+			buildPhases = (
+				5A945F972A1E024C00D0B60B /* Sources */,
+				5A945F982A1E024C00D0B60B /* Frameworks */,
+				5A945F992A1E024C00D0B60B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5A945F9D2A1E024C00D0B60B /* PBXTargetDependency */,
+			);
+			name = CarityUITests;
+			productName = CarityUITests;
+			productReference = 5A945F9B2A1E024C00D0B60B /* CarityUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5A945F792A1E024A00D0B60B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					5A945F802A1E024A00D0B60B = {
+						CreatedOnToolsVersion = 14.3;
+					};
+					5A945F902A1E024C00D0B60B = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 5A945F802A1E024A00D0B60B;
+					};
+					5A945F9A2A1E024C00D0B60B = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 5A945F802A1E024A00D0B60B;
+					};
+				};
+			};
+			buildConfigurationList = 5A945F7C2A1E024A00D0B60B /* Build configuration list for PBXProject "Carity" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5A945F782A1E024A00D0B60B;
+			productRefGroup = 5A945F822A1E024A00D0B60B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5A945F802A1E024A00D0B60B /* Carity */,
+				5A945F902A1E024C00D0B60B /* CarityTests */,
+				5A945F9A2A1E024C00D0B60B /* CarityUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5A945F7F2A1E024A00D0B60B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A945F8C2A1E024B00D0B60B /* Preview Assets.xcassets in Resources */,
+				5A945F892A1E024B00D0B60B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A945F8F2A1E024C00D0B60B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A945F992A1E024C00D0B60B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5A945F7D2A1E024A00D0B60B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A945F872A1E024A00D0B60B /* ContentView.swift in Sources */,
+				5A945F852A1E024A00D0B60B /* CarityApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A945F8D2A1E024C00D0B60B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A945F962A1E024C00D0B60B /* CarityTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A945F972A1E024C00D0B60B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A945FA22A1E024C00D0B60B /* CarityUITestsLaunchTests.swift in Sources */,
+				5A945FA02A1E024C00D0B60B /* CarityUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5A945F932A1E024C00D0B60B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5A945F802A1E024A00D0B60B /* Carity */;
+			targetProxy = 5A945F922A1E024C00D0B60B /* PBXContainerItemProxy */;
+		};
+		5A945F9D2A1E024C00D0B60B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5A945F802A1E024A00D0B60B /* Carity */;
+			targetProxy = 5A945F9C2A1E024C00D0B60B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5A945FA32A1E024C00D0B60B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5A945FA42A1E024C00D0B60B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5A945FA62A1E024C00D0B60B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Carity/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.Carity";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5A945FA72A1E024C00D0B60B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Carity/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.Carity";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5A945FA92A1E024C00D0B60B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.CarityTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Carity.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Carity";
+			};
+			name = Debug;
+		};
+		5A945FAA2A1E024C00D0B60B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.CarityTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Carity.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Carity";
+			};
+			name = Release;
+		};
+		5A945FAC2A1E024C00D0B60B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.CarityUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Carity;
+			};
+			name = Debug;
+		};
+		5A945FAD2A1E024C00D0B60B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.CarityUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Carity;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5A945F7C2A1E024A00D0B60B /* Build configuration list for PBXProject "Carity" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A945FA32A1E024C00D0B60B /* Debug */,
+				5A945FA42A1E024C00D0B60B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5A945FA52A1E024C00D0B60B /* Build configuration list for PBXNativeTarget "Carity" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A945FA62A1E024C00D0B60B /* Debug */,
+				5A945FA72A1E024C00D0B60B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5A945FA82A1E024C00D0B60B /* Build configuration list for PBXNativeTarget "CarityTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A945FA92A1E024C00D0B60B /* Debug */,
+				5A945FAA2A1E024C00D0B60B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5A945FAB2A1E024C00D0B60B /* Build configuration list for PBXNativeTarget "CarityUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A945FAC2A1E024C00D0B60B /* Debug */,
+				5A945FAD2A1E024C00D0B60B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5A945F792A1E024A00D0B60B /* Project object */;
+}
