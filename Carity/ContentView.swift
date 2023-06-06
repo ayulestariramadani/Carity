@@ -7,20 +7,28 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+extension UserDefaults{
+    
+    var firstScreenShow: Bool {
+        get {
+            return (UserDefaults.standard.value(forKey: "firstScreenShow") as? Bool) ?? false
         }
-        .padding()
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: "firstScreenShow")
+        }
+    }
+  
+}
+
+struct ContentView: View {
+    
+    var body: some View {
+        if UserDefaults.standard.firstScreenShow {
+            SplashScreen()
+        }else {
+            OnBoarding()
+        }
+        
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
