@@ -59,6 +59,7 @@ struct OnBoardingPage: View {
     @State private var isActive: Bool = false
     
     var body: some View {
+        NavigationStack {
         VStack(spacing: 17) {
             Spacer()
             Image(image)
@@ -83,7 +84,7 @@ struct OnBoardingPage: View {
         Spacer()
            
             VStack {
-                NavigationStack {
+               
                     if dismissButton {
                         PrimaryButton(title: "Start") {
                             isActive.toggle()

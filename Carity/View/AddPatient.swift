@@ -27,7 +27,7 @@ struct AddPatient: View {
     @State var image: UIImage?
     
     var body: some View {
-        NavigationStack {
+       
             ZStack {
                 Color.colorPrimary
                     .edgesIgnoringSafeArea(.bottom)
@@ -126,9 +126,7 @@ struct AddPatient: View {
             .toolbar {
                 Button("Save"){}
             }
-        }
-        .navigationTitle("Add Patient")
-        .navigationBarTitleDisplayMode(.inline)
+       
         
     }
 }

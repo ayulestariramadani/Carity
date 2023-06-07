@@ -24,9 +24,9 @@ struct ContentView: View {
     
     var body: some View {
         if UserDefaults.standard.firstScreenShow {
-            SplashScreen()
+            MainView()
         }else {
-            OnBoarding()
+            SplashScreen()
         }
         
     }

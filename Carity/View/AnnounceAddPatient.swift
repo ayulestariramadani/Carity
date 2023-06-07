@@ -12,7 +12,7 @@ struct AnnounceAddPatient: View {
     @State var isNavigate: Bool = false
     
     var body: some View {
-        NavigationStack {
+       
             VStack {
                 Spacer()
                 Text("Please add your patient")
@@ -29,7 +29,7 @@ struct AnnounceAddPatient: View {
             }
             
             
-        }
+        
         
 
     }

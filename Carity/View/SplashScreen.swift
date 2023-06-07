@@ -15,7 +15,7 @@ struct SplashScreen: View {
         VStack {
             
             if self.isActive {
-                MainView()
+                OnBoarding()
             }else {
                 Image("Logo")
                     .resizable()

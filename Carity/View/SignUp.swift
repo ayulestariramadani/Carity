@@ -12,7 +12,6 @@ struct SignUp: View {
     @State var isActive: Bool = false
     
     var body: some View {
-        
         VStack(spacing: 15) {
             Spacer()
             Image("Logo")
