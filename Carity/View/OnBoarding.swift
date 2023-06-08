@@ -63,31 +63,31 @@ struct OnBoardingPage: View {
     
     var body: some View {
         NavigationStack {
-        VStack(spacing: 17) {
-            Spacer()
-            Image(image)
-                .resizable()
-                .frame(width: 220, height: 200)
-            
-            VStack(alignment: .leading, spacing: 10) {
+            VStack(spacing: 17) {
                 Spacer()
-                Text (title)
-                    .fontWeight(.bold)
-                    .font(.system(size: 16))
-                    .foregroundColor(Color.colorButton)
-                    .multilineTextAlignment(.leading)
-                  
+                Image(image)
+                    .resizable()
+                    .frame(width: 220, height: 200)
                 
-                Text(text)
-                    .font(.system(size: 14))
-                    .multilineTextAlignment(.leading)
+                VStack(alignment: .leading, spacing: 10) {
+                    Spacer()
+                    Text (title)
+                        .fontWeight(.bold)
+                        .font(.system(size: 16))
+                        .foregroundColor(Color.colorButton)
+                        .multilineTextAlignment(.leading)
                     
-            }
-            .padding()
-        Spacer()
-           
-            VStack {
+                    
+                    Text(text)
+                        .font(.system(size: 14))
+                        .multilineTextAlignment(.leading)
+                    
+                }
+                .padding()
+                Spacer()
                 
+                VStack {
+                    
                     if dismissButton {
                         PrimaryButton(title: "Start") {
                             isActive.toggle()
@@ -99,13 +99,14 @@ struct OnBoardingPage: View {
                     } else {
                         //
                     }
+                    
+                    
+                }
+                .navigationBarBackButtonHidden(true)
+                Spacer()
                 
                 
             }
-            .navigationBarBackButtonHidden(true)
-            Spacer()
-          
-            
         }
     }
 }
