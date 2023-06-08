@@ -21,16 +21,13 @@ class ListPatientViewModel: ObservableObject {
     func delete(index: IndexSet) {
         patient.remove(atOffsets: index)
     }
-    
-    
 }
 
 let patientData = [
     Patient(name: "Rizaldi Septian Fauzi"),
-    Patient(name: "Joshua Sihombing"),
+    Patient(name: "Pahala Yuda Joshua Sihombing"),
     Patient(name: "Arman Maulana"),
-    Patient(name: "Agung hapsah"),
+    Patient(name: "Agung Hapsah"),
     Patient(name: "Yusuf Mahardika"),
     Patient(name: "Sulaiman Kimbap")
-    
 ]
