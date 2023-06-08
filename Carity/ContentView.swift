@@ -26,8 +26,10 @@ struct ContentView: View {
         if UserDefaults.standard.firstScreenShow {
             MainView()
         }else {
+            
             SplashScreen()
         }
+        
         
     }
 }
