@@ -18,15 +18,7 @@ struct Dashboard: View {
     @State private var patientIsSelected : Bool = false
     
     //note_data
-    @State private var note_tittle : String = "Resep Obat Patah Hati"
-    @State private var note_recordTime : String = "Sunday, 09.40 am"
-    @State private var note_recordDate : String = "28/05/23"
-    @State private var note_labelSFSymbol : LabelSFSymbol = .treatment_medication
-    @State private var note_labelText : LabelText = .treatment_medication
-
-    @State private var note_isReminded : Bool = true
-    
-    @State private var searchedText : String = ""
+    var total_note : Int = 8
      
     //alert
     @State private var showDeletePatientAlert : Bool = false
@@ -43,14 +35,36 @@ struct Dashboard: View {
                     Spacer(minLength: 11)
                     PatientBar(patient_nickname: $patient_nickname, patient_disease: $patient_disease, patientIsSelected: $patientIsSelected, showDeletePatientAlert: $showDeletePatientAlert)
                     Spacer(minLength: 11)
-                    NoteReview(review_tittle: "This Week", isThisWeek : true, isRemindedSoon : false
+                    NoteReview(review_tittle: "Notes of This Week", isThisWeek : true, isRemindedSoon : false
 //                               , searchedText: $searchedText
                     )
-                    NoteReview(review_tittle: "Reminded Soon", isThisWeek : false, isRemindedSoon : true
+                    NoteReview(review_tittle: "Notes to Be Reminded Soon", isThisWeek : false, isRemindedSoon : true
 //                               , searchedText: $searchedText
                     )
                 }
                 .padding(.horizontal, 16.0).lineLimit(nil)
+                
+            }
+            .toolbar(){
+                ToolbarItem(placement: .bottomBar){
+                    HStack{
+                        if total_note > 1 {
+                            Text("\(total_note) notes").font(.body).fontWeight(.bold).foregroundColor(Color("dark"))
+                        } else {
+                            Text("\(total_note) note").font(.body).fontWeight(.bold).foregroundColor(Color("dark"))
+                        }
+                        Spacer()
+                        Button( action:{
+                            //add Notes
+                        }){
+                            Image(systemName: "square.and.pencil").frame(minWidth: 40, maxWidth: 45, minHeight: 40, maxHeight: 45)
+                                .background(Color("tale_main"))
+                                .foregroundColor(Color("white"))
+                                .clipShape(Circle())
+                                .font(.subheadline).fontWeight(.bold)
+                        }
+                    }
+                }
             }
         }
     }
