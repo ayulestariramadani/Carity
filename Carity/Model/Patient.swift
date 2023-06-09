@@ -11,8 +11,7 @@ struct Patient: Identifiable {
     var id = UUID()
     var nickName: String
     var fullName: String
-    var relation: String
-    var birthDate: Date
+    var birthDate: String
     var diseas: String
     var description: String
     var height: Int
@@ -20,3 +19,5 @@ struct Patient: Identifiable {
     var bloodType: String
     var image: String
 }
+
+
