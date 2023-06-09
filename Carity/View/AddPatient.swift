@@ -105,7 +105,7 @@ struct AddPatient: View {
                         .foregroundColor(Color.black)
                         .pickerStyle(.menu)
                     }
-                    .cornerRadius(10)
+                    .cornerRadius(11)
                     .padding(.horizontal)
                     .listStyle(PlainListStyle())
                     .background(Color.colorPrimary)
@@ -122,6 +122,7 @@ struct AddPatient: View {
                         .ignoresSafeArea()
                 }
             }
+            .navigationBarBackButtonHidden(true)
             
             .toolbar {
                 Button("Save"){}

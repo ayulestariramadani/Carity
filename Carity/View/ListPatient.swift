@@ -30,7 +30,7 @@ struct ListPatient: View {
                         }
 
                 }
-                .cornerRadius(10)
+                .cornerRadius(11)
                 .padding(.horizontal)
                 .listStyle(PlainListStyle())
                 .background(Color.colorPrimary)

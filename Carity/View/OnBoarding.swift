@@ -35,18 +35,20 @@ struct OnBoarding: View {
                     OnBoardingPage(title: "Share your information!", text: "Knowing your priorities is excellent. Busy and need to assign your caregiving tasks to others? Fret not, you can do it seamlessly with Carity.", image: "Ontiga", dismissButton: true)
                 }
                 .tabViewStyle(PageTabViewStyle())
-                .navigationBarBackButtonHidden(true)
+                
                 .padding()
                 Spacer()
                 Spacer()
                 Spacer()
                 Spacer()
             }
+            
             .onAppear {
                 UserDefaults.standard.firstScreenShow = true
             }
 
         }
+        
               
     }
 }
@@ -62,7 +64,6 @@ struct OnBoardingPage: View {
     @State private var isActive: Bool = false
     
     var body: some View {
-        NavigationStack {
             VStack(spacing: 17) {
                 Spacer()
                 Image(image)
@@ -95,6 +96,7 @@ struct OnBoardingPage: View {
                         .navigationDestination(isPresented: $isActive) {
                             SignUp()
                         }
+                       
                         
                     } else {
                         //
@@ -102,12 +104,13 @@ struct OnBoardingPage: View {
                     
                     
                 }
-                .navigationBarBackButtonHidden(true)
+               
+                Spacer()
                 Spacer()
                 
                 
             }
-        }
+        
     }
 }
 

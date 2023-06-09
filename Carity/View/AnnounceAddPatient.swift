@@ -25,6 +25,7 @@ struct AnnounceAddPatient: View {
                 .navigationDestination(isPresented: $isNavigate) {
                     AddPatient()
                 }
+                .navigationBarBackButtonHidden(true)
                 
             }
             

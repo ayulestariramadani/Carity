@@ -34,20 +34,32 @@ struct SignUp: View {
             Text("A simple way to share your care")
                 .font(.system(size: 12))
             
-            if !isSignedIn{
-                //if not Sign In
-                SignInButtonView()
+            Button {
+                self.isActive.toggle()
+            } label: {
+                HStack {
+                    Image(systemName: "apple.logo")
+                        .foregroundColor(.white)
+                    Text("Sign up with Apple")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        
+                }
+                .frame(height: 55)
+                .frame(maxWidth: .infinity)
+                .background(Color.black)
+                .cornerRadius(11)
             }
-            else{
-                //if Signed In
-                Text("Welcome Back")
-            }
-            
+            .navigationDestination(isPresented: $isActive, destination: {
+                AnnounceAddPatient()
+            })
+            .padding(.horizontal)
            
             Spacer()
             Spacer()
             Spacer()
         }
+        .navigationBarBackButtonHidden(true)
         
     }
 }

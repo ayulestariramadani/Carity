@@ -22,7 +22,7 @@ struct PrimaryButton: View {
                 .frame(width: UIScreen.main.bounds.width - 40, height: 52)
         }
         .background(Color.colorButton)
-        .cornerRadius(10)
+        .cornerRadius(11)
 
     }
 }
