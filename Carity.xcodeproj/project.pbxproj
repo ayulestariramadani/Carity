@@ -12,7 +12,6 @@
 		3793BC822A2F693300A8E16B /* AddPatient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3793BC7C2A2F693300A8E16B /* AddPatient.swift */; };
 		3793BC832A2F693300A8E16B /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3793BC7D2A2F693300A8E16B /* SignUp.swift */; };
 		3793BC842A2F693300A8E16B /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3793BC7E2A2F693300A8E16B /* SplashScreen.swift */; };
-		3793BC852A2F693300A8E16B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3793BC7F2A2F693300A8E16B /* MainView.swift */; };
 		3793BC882A2F698100A8E16B /* ListPatientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3793BC872A2F698100A8E16B /* ListPatientViewModel.swift */; };
 		3793BC8F2A2F699C00A8E16B /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3793BC8A2A2F699B00A8E16B /* Patient.swift */; };
 		3793BC902A2F699C00A8E16B /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3793BC8C2A2F699C00A8E16B /* Color+Ext.swift */; };
@@ -63,7 +62,6 @@
 		3793BC7C2A2F693300A8E16B /* AddPatient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPatient.swift; sourceTree = "<group>"; };
 		3793BC7D2A2F693300A8E16B /* SignUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		3793BC7E2A2F693300A8E16B /* SplashScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
-		3793BC7F2A2F693300A8E16B /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		3793BC872A2F698100A8E16B /* ListPatientViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPatientViewModel.swift; sourceTree = "<group>"; };
 		3793BC8A2A2F699B00A8E16B /* Patient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
 		3793BC8C2A2F699C00A8E16B /* Color+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
@@ -122,15 +120,10 @@
 		3793BC792A2F693300A8E16B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B1CF3EA52A332627005DFCFC /* On Boarding */,
 				B1CF3E9F2A33236D005DFCFC /* Patient Management */,
-				3793BC922A2F69CE00A8E16B /* AnnounceAddPatient.swift */,
 				B129B97F2A31298A00E8C639 /* Notes Management */,
 				3793BC7A2A2F693300A8E16B /* ListPatient.swift */,
-				3793BC7B2A2F693300A8E16B /* OnBoarding.swift */,
-				3793BC7C2A2F693300A8E16B /* AddPatient.swift */,
-				3793BC7D2A2F693300A8E16B /* SignUp.swift */,
-				3793BC7E2A2F693300A8E16B /* SplashScreen.swift */,
-				3793BC7F2A2F693300A8E16B /* MainView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -248,11 +241,23 @@
 		B1CF3E9F2A33236D005DFCFC /* Patient Management */ = {
 			isa = PBXGroup;
 			children = (
+				3793BC7C2A2F693300A8E16B /* AddPatient.swift */,
 				B129B9802A3129E300E8C639 /* PatientBar.swift */,
 				B1CF3EA02A3323AD005DFCFC /* PatientList.swift */,
 				B1CF3EA22A33243E005DFCFC /* PatientCard.swift */,
 			);
 			path = "Patient Management";
+			sourceTree = "<group>";
+		};
+		B1CF3EA52A332627005DFCFC /* On Boarding */ = {
+			isa = PBXGroup;
+			children = (
+				3793BC7E2A2F693300A8E16B /* SplashScreen.swift */,
+				3793BC7B2A2F693300A8E16B /* OnBoarding.swift */,
+				3793BC7D2A2F693300A8E16B /* SignUp.swift */,
+				3793BC922A2F69CE00A8E16B /* AnnounceAddPatient.swift */,
+			);
+			path = "On Boarding";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -388,7 +393,6 @@
 			files = (
 				5A945F872A1E024A00D0B60B /* ContentView.swift in Sources */,
 				B129B9812A3129E300E8C639 /* PatientBar.swift in Sources */,
-				3793BC852A2F693300A8E16B /* MainView.swift in Sources */,
 				3793BC832A2F693300A8E16B /* SignUp.swift in Sources */,
 				3793BC842A2F693300A8E16B /* SplashScreen.swift in Sources */,
 				B1CF3EA12A3323AD005DFCFC /* PatientList.swift in Sources */,
