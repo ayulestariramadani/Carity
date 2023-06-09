@@ -16,7 +16,7 @@ struct ListPatient: View {
                 Color.colorPrimary
                 List {
                     ForEach(viewModel.patient) { item in
-                        Text(item.name)
+                        Text(item.nickName)
                     }.onDelete(perform: viewModel.delete)
                         .swipeActions(edge: .leading) {
                             Button {
@@ -30,7 +30,7 @@ struct ListPatient: View {
                         }
 
                 }
-                .cornerRadius(10)
+                .cornerRadius(11)
                 .padding(.horizontal)
                 .listStyle(PlainListStyle())
                 .background(Color.colorPrimary)

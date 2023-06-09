@@ -9,5 +9,15 @@ import Foundation
 
 struct Patient: Identifiable {
     var id = UUID()
-    var name: String
+    var nickName: String
+    var fullName: String
+    var birthDate: String
+    var diseas: String
+    var description: String
+    var height: Int
+    var weight: Int
+    var bloodType: String
+    var image: String
 }
+
+
