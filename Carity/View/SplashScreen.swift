@@ -9,13 +9,14 @@ import SwiftUI
 
 struct SplashScreen: View {
     
-    @State var isActive: Bool = false
+    @State var isSplashActive: Bool = false
+   
     
     var body: some View {
         VStack {
             
-            if self.isActive {
-                MainView()
+            if self.isSplashActive {
+                   OnBoarding()
             }else {
                 Image("Logo")
                     .resizable()
@@ -28,7 +29,7 @@ struct SplashScreen: View {
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                 withAnimation {
-                    self.isActive = true
+                    self.isSplashActive = true
                 }
             }
         }
