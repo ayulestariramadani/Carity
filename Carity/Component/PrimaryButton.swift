@@ -21,7 +21,7 @@ struct PrimaryButton: View {
                 .foregroundColor(.white)
                 .frame(width: UIScreen.main.bounds.width - 40, height: 52)
         }
-        .background(Color.colorButton)
+        .background(Color("tale_main"))
         .cornerRadius(11)
 
     }
