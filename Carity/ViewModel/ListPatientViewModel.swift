@@ -24,10 +24,10 @@ class ListPatientViewModel: ObservableObject {
 }
 
 let patientData = [
-    Patient(name: "Rizaldi Septian Fauzi"),
-    Patient(name: "Pahala Yuda Joshua Sihombing"),
-    Patient(name: "Arman Maulana"),
-    Patient(name: "Agung Hapsah"),
-    Patient(name: "Yusuf Mahardika"),
-    Patient(name: "Sulaiman Kimbap")
+    Patient(nickName: "Rizaldi Septian Fauzi"),
+    Patient(nickName: "Pahala Yuda Joshua Sihombing"),
+    Patient(nickName: "Arman Maulana"),
+    Patient(nickName: "Agung Hapsah"),
+    Patient(nickName: "Yusuf Mahardika"),
+    Patient(nickName: "Sulaiman Kimbap")
 ]

@@ -16,7 +16,7 @@ struct ListPatient: View {
                 Color.colorPrimary
                 List {
                     ForEach(viewModel.patient) { item in
-                        Text(item.name)
+                        Text(item.nickName)
                     }.onDelete(perform: viewModel.delete)
                         .swipeActions(edge: .leading) {
                             Button {
