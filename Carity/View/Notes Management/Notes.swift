@@ -1,25 +1,19 @@
 //
-//  Dashboard.swift
+//  Notes.swift
 //  Carity
 //
-//  Created by Rizaldi Septian Fauzi on 03/06/23.
+//  Created by Rizaldi Septian Fauzi on 08/06/23.
 //
 
 import SwiftUI
 
-struct Dashboard: View {
-    //caregiver_data
-    var caregiver_firstname : String = "Kim"
+struct Notes: View {
     
-    //patient_data
-    @State private var patient_nickname : String = "Rizal"
-    @State private var patient_disease : String = "Patah Hati"
-    
-    @State private var patientIsSelected : Bool = false
+    @State var searchedText : String
     
     //note_data
-    var total_note : Int = 0
-     
+    var total_note : Int = 8
+    
     //alert
     @State private var showDeletePatientAlert : Bool = false
     
@@ -28,13 +22,6 @@ struct Dashboard: View {
             ZStack{
                 Color("mint").ignoresSafeArea()
                 VStack{
-                    HStack{
-                        Text("Hi, \(caregiver_firstname)").font(.largeTitle.bold()).foregroundColor(Color("dark"))
-                        Spacer()
-                    }
-                    Spacer(minLength: 11)
-                    PatientBar(patient_nickname: $patient_nickname, patient_disease: $patient_disease, patientIsSelected: $patientIsSelected, showDeletePatientAlert: $showDeletePatientAlert)
-                    Spacer(minLength: 11)
                     if total_note == 0 {
                         Button("\(Image(systemName: "square.and.pencil")) Add Note", action: {
                             //add Note
@@ -44,12 +31,7 @@ struct Dashboard: View {
                             
                         }.listStyle(.plain).cornerRadius(11).hidden()
                     } else {
-                        NoteReview(review_tittle: "Notes of The Week", isThisWeek : true, isRemindedSoon : false
-                                   //                               , searchedText: $searchedText
-                        )
-                        NoteReview(review_tittle: "Upcoming Notes", isThisWeek : false, isRemindedSoon : true
-                                   //                               , searchedText: $searchedText
-                        )
+                        NoteList(searchedText: $searchedText)
                     }
                 }
                 .padding(.horizontal, 16.0).lineLimit(nil)
@@ -80,8 +62,8 @@ struct Dashboard: View {
     }
 }
 
-struct Dashboard_Previews: PreviewProvider {
+struct Notes_Previews: PreviewProvider {
     static var previews: some View {
-        Dashboard()
+        Notes(searchedText: "")
     }
 }

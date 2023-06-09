@@ -19,17 +19,6 @@ enum LabelText: String, View {
     case other                              = ""
     
     var body: some View {
-        switch self{
-        case .condition_symptom, .condition_allergyAndIntolerance :
-            Text(rawValue).foregroundColor(Color("condition"))
-        case .assessment_consultation, .assessment_clinicalDocument :
-            Text(rawValue).foregroundColor(Color("assessment"))
-        case .treatment_medication, .treatment_foodAndNutrition :
-            Text(rawValue).foregroundColor(Color("treatment"))
-        case .behaviour_ritual, .behaviour_habitAndPreference :
-            Text(rawValue).foregroundColor(Color("behaviour"))
-        case .other :
-            Text(rawValue).foregroundColor(Color("50%"))
-        }
+        Text(rawValue).foregroundColor(Color("tale_main"))
     }
 }
