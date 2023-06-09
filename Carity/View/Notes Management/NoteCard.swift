@@ -21,19 +21,19 @@ struct NoteCard: View {
             note_labelSFSymbol.font(.system(size: 40)).frame(width: 60)
             VStack(alignment: .leading){
                 Text(note_tittle).font(.subheadline).fontWeight(.semibold)
-                Text(note_recordTime).font(.caption2).fontWeight(.semibold)
+                Text(note_recordDate).font(.caption2).fontWeight(.semibold)
                 Spacer()
                 note_labelText.font(.footnote).fontWeight(.semibold)
             }
             Spacer()
             VStack(alignment: .trailing){
                 if note_isReminded {
-                    Image(systemName: "alarm.waves.left.and.right.fill").frame(width: 30, height: 30).background(Color("sand_main")).foregroundColor(Color("dark"))
+                    Image(systemName: "alarm.fill").frame(width: 30, height: 30).background(Color("sand_main")).foregroundColor(Color("dark"))
                         .clipShape(Circle())
                         .font(.subheadline)
                 }
                 Spacer()
-                Text(note_recordDate).font(.caption2).fontWeight(.semibold)
+                Text(note_recordTime).font(.caption2).fontWeight(.semibold)
             }
         }.padding(.horizontal, 8.0).frame(width: 358, height: 60).foregroundColor(Color("dark"))
     }

@@ -91,7 +91,7 @@ struct PatientBar: View {
                 Button(action:{
                     //change patient
                 }){
-                    Label("Change", systemImage: "rectangle.2.swap")
+                    Label("Switch", systemImage: "rectangle.2.swap")
                 }.frame(minWidth: 100, maxWidth: 128, minHeight: 28, maxHeight: 28).background(Color("sand_main")).foregroundColor(Color("dark"))
                     .clipShape(RoundedRectangle(cornerRadius: 11))
             }.font(.caption).fontWeight(.medium)
