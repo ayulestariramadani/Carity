@@ -10,18 +10,15 @@ import SwiftUI
 struct PatientList: View {
     @StateObject var viewModel = ListPatientViewModel()
     
-    @Binding var searchedText : String
-    
     var body: some View {
         List{
-            ForEach(viewModel.patient,id:\.id) { note in
+            ForEach(viewModel.patients,id:\.id) { patient in
                 Button( action:{
                     //choose patient
                 }){
-                    
+                    PatientCard(image: patient.image, nickName: patient.nickName, disease: patient.disease)
                 }
             }
-        }.listStyle(.inset).cornerRadius(11).navigationBarTitle("Notes")
-            .searchable(text: $searchedText, prompt: "Search Note")
+        }.listStyle(.inset).cornerRadius(11).navigationBarTitle("Patients")
     }
 }
