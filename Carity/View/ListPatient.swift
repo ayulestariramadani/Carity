@@ -15,7 +15,7 @@ struct ListPatient: View {
             ZStack {
                 Color.colorPrimary
                 List {
-                    ForEach(viewModel.patient) { item in
+                    ForEach(viewModel.patients) { item in
                         Text(item.nickName)
                     }.onDelete(perform: viewModel.delete)
                         .swipeActions(edge: .leading) {

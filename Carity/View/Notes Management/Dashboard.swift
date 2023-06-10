@@ -16,7 +16,7 @@ struct Dashboard: View {
     @State private var patient_disease : String = "Patah Hati"
     
     @State private var patientIsSelected : Bool = false
-    
+        
     //note_data
     var total_note : Int = 0
      

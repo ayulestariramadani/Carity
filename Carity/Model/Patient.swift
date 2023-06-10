@@ -12,7 +12,7 @@ struct Patient: Identifiable {
     var nickName: String
     var fullName: String
     var birthDate: String
-    var diseas: String
+    var disease: String
     var description: String
     var height: Int
     var weight: Int

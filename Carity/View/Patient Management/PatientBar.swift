@@ -15,7 +15,7 @@ struct PatientBar: View {
     @Binding var patient_disease : String
     
     @Binding var patientIsSelected : Bool
-    
+        
     //alert
     @Binding var showDeletePatientAlert : Bool
     
@@ -38,6 +38,7 @@ struct PatientBar: View {
                     Label("Duplicate", systemImage: "plus.square.on.square")
                 }
                 Button(action: {
+                    showSheetOfEditPatient.toggle()
                     //edit patient
                 }) {
                     Label("Edit", systemImage: "pencil")
@@ -67,8 +68,8 @@ struct PatientBar: View {
         } primaryAction: {
             showSheetOfEditPatient.toggle()
         }.sheet(isPresented: $showSheetOfEditPatient){
-            Text("Test")
-                .presentationDetents([.fraction(0.85)])
+            AddPatient()
+                .presentationDetents([.fraction(0.95)])
         }
         .alert(isPresented: $showDeletePatientAlert) {
             Alert(
@@ -102,7 +103,7 @@ struct PatientBar: View {
                 }.frame(minWidth: 100, maxWidth: 128, minHeight: 28, maxHeight: 28).background(Color("sand_main")).foregroundColor(Color("dark"))
                     .clipShape(RoundedRectangle(cornerRadius: 11))
                     .sheet(isPresented: $showSheetOfListPatients){
-                        Text("Test")
+                        PatientList()
                             .presentationDetents([.fraction(0.85)])
                     }
                 
