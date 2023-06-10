@@ -50,3 +50,28 @@ struct ListPatient_Previews: PreviewProvider {
         ListPatient()
     }
 }
+
+func labelIcon(label : String) -> some View {
+    switch label {
+    case "Symptom" :
+        return Image(systemName: "tag.fill").foregroundColor(Color("main_tale"))
+    case "Allergy and Intolerance" :
+        return Image(systemName: "tag.fill").foregroundColor(Color("main_tale"))
+    case "Consultation" :
+        return Image(systemName: "tag.fill").foregroundColor(Color("main_tale"))
+    case "Clinical Document" :
+        return Image(systemName: "tag.fill").foregroundColor(Color("main_tale"))
+    case "Medication" :
+        return Image(systemName: "tag.fill").foregroundColor(Color("main_tale"))
+    case "Food and Nutrition" :
+        return Image(systemName: "tag.fill").foregroundColor(Color("main_tale"))
+    case "Ritual" :
+        return Image(systemName: "tag.fill").foregroundColor(Color("main_tale"))
+    case "Habit and Preference" :
+        return Image(systemName: "tag.fill").foregroundColor(Color("main_tale"))
+    case "Others" :
+        return Image(systemName: "tag.fill").foregroundColor(Color("main_tale"))
+    default :
+        return Image(systemName: "tag.fill").foregroundColor(Color("main_tale"))
+    }
+}

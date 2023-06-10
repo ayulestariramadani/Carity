@@ -96,15 +96,17 @@ struct AddPatient: View {
                             Text("Kg")
                                 .padding(.trailing, 5)
                         }
-                        Picker("Blood Type", selection: $blood) {
-                            ForEach(bloodList, id: \.self) {
-                                Text($0)
-                                    
+                            Picker("Blood Type", selection: $blood) {
+                                ForEach(bloodList, id: \.self) {
+                                    Text($0)
+                                        
+                                }
+                                
                             }
-                            
-                        }
-                        .foregroundColor(Color.black)
-                        .pickerStyle(.menu)
+                            .foregroundColor(Color.black)
+                            .pickerStyle(.menu)
+                        
+                      
                     }
                     .cornerRadius(11)
                     .padding(.horizontal)
@@ -116,7 +118,7 @@ struct AddPatient: View {
                         perform: {})
                     
                     
-                }
+                }.autocorrectionDisabled(true)
                 .navigationViewStyle(StackNavigationViewStyle())
                 .fullScreenCover(isPresented: $shouldShowImagePicker, onDismiss: nil) {
                     ImagePicker(image: $image)
