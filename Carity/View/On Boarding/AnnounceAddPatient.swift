@@ -13,11 +13,26 @@ struct AnnounceAddPatient: View {
     
     var body: some View {
        
-            VStack {
+        VStack {
+            Image("OnBoarding4")
+                .resizable()
+                .frame(width: 220, height: 200).hidden()
+            Image("OnBoarding4")
+                .resizable()
+                .frame(width: 220, height: 200)
+            Spacer()
+            VStack(spacing: 10) {
                 Spacer()
-                Text("Please add your patient")
-                    .font(.custom("SF Pro Text", size: 20))
-                    .fontWeight(.bold)
+                Text ("Please add your first patient.")
+                    .fontWeight(.semibold)
+                    .font(.system(.title3))
+                    .foregroundColor(Color("dark"))
+                    .multilineTextAlignment(.leading)
+                Spacer()
+                Spacer()
+            }
+            .padding(.horizontal)
+            VStack {
                 Spacer()
                 PrimaryButton(title: "Add Patient") {
                     isNavigate.toggle()
@@ -25,14 +40,9 @@ struct AnnounceAddPatient: View {
                 .navigationDestination(isPresented: $isNavigate) {
                     AddPatient()
                 }
-                .navigationBarBackButtonHidden(true)
-                
+                Spacer()
             }
-            
-            
-        
-        
-
+        }
     }
 }
 

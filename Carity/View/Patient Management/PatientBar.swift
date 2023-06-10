@@ -16,6 +16,7 @@ struct PatientBar: View {
     
     @Binding var patientIsSelected : Bool
         
+    @Binding var addPatientIsPresented : Bool
     //alert
     @Binding var showDeletePatientAlert : Bool
     
@@ -91,11 +92,14 @@ struct PatientBar: View {
         }
             VStack{
                 Button(action:{
-                    //add patient
+                    self.addPatientIsPresented.toggle()
                 }){
                     Label("Add Patient", systemImage: "plus")
                 }.frame(minWidth: 100, maxWidth: 128, minHeight: 28, maxHeight: 28).background(Color("tale_main")).foregroundColor(Color("white"))
                     .clipShape(RoundedRectangle(cornerRadius: 11))
+                    .navigationDestination(isPresented: $addPatientIsPresented, destination: {
+                        AddPatient()
+                    })
                 Button(action:{
                     showSheetOfListPatients.toggle()
                 }){
@@ -108,6 +112,7 @@ struct PatientBar: View {
                     }
                 
             }.font(.caption).fontWeight(.medium)
+            
         }
     }
 }
