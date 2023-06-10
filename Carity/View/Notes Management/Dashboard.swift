@@ -16,6 +16,8 @@ struct Dashboard: View {
     @State private var patient_disease : String = "Patah Hati"
     
     @State private var patientIsSelected : Bool = false
+    
+    @State private var addPatientIsPresented : Bool = false
         
     //note_data
     var total_note : Int = 0
@@ -33,7 +35,7 @@ struct Dashboard: View {
                         Spacer()
                     }
                     Spacer(minLength: 11)
-                    PatientBar(patient_nickname: $patient_nickname, patient_disease: $patient_disease, patientIsSelected: $patientIsSelected, showDeletePatientAlert: $showDeletePatientAlert)
+                    PatientBar(patient_nickname: $patient_nickname, patient_disease: $patient_disease, patientIsSelected: $patientIsSelected, addPatientIsPresented: $addPatientIsPresented, showDeletePatientAlert: $showDeletePatientAlert)
                     Spacer(minLength: 11)
                     if total_note == 0 {
                         Button("\(Image(systemName: "square.and.pencil")) Add Note", action: {

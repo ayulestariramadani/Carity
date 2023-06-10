@@ -13,22 +13,19 @@ struct SplashScreen: View {
    
     
     var body: some View {
-        VStack {
-            
-            if self.isSplashActive {
-                   OnBoarding()
-            }else {
-                Image("Logo")
+        ZStack {
+            OnBoarding().opacity(isSplashActive ? 1 : 0)
+            VStack{
+                Image("logo")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 100, height: 100)
+                    .opacity(isSplashActive ? 0 : 1)
             }
-            
-            
         }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                withAnimation {
+                withAnimation(.easeOut(duration: 0.5)){
                     self.isSplashActive = true
                 }
             }
