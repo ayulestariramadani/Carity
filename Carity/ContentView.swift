@@ -24,7 +24,7 @@ struct ContentView: View {
     
     var body: some View {
         if UserDefaults.standard.firstScreenShow {
-            MainView()
+            Dashboard()
         }else {
             
             SplashScreen()

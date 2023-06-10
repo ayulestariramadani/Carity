@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		374C69C52A34460B002AD496 /* AddNotePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374C69C42A34460B002AD496 /* AddNotePage.swift */; };
 		3793BC802A2F693300A8E16B /* ListPatient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3793BC7A2A2F693300A8E16B /* ListPatient.swift */; };
 		3793BC812A2F693300A8E16B /* OnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3793BC7B2A2F693300A8E16B /* OnBoarding.swift */; };
 		3793BC822A2F693300A8E16B /* AddPatient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3793BC7C2A2F693300A8E16B /* AddPatient.swift */; };
@@ -57,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		374C69C42A34460B002AD496 /* AddNotePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNotePage.swift; sourceTree = "<group>"; };
 		3793BC7A2A2F693300A8E16B /* ListPatient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPatient.swift; sourceTree = "<group>"; };
 		3793BC7B2A2F693300A8E16B /* OnBoarding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoarding.swift; sourceTree = "<group>"; };
 		3793BC7C2A2F693300A8E16B /* AddPatient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPatient.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				B129B9882A31880200E8C639 /* NoteReview.swift */,
 				B1CF3E9B2A31E38D005DFCFC /* Notes.swift */,
 				B1CF3E9D2A32D994005DFCFC /* NoteList.swift */,
+				374C69C42A34460B002AD496 /* AddNotePage.swift */,
 			);
 			path = "Notes Management";
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				5A945F872A1E024A00D0B60B /* ContentView.swift in Sources */,
 				B129B9812A3129E300E8C639 /* PatientBar.swift in Sources */,
 				3793BC832A2F693300A8E16B /* SignUp.swift in Sources */,
+				374C69C52A34460B002AD496 /* AddNotePage.swift in Sources */,
 				3793BC842A2F693300A8E16B /* SplashScreen.swift in Sources */,
 				B1CF3EA12A3323AD005DFCFC /* PatientList.swift in Sources */,
 				B129B9872A3185B800E8C639 /* NoteCard.swift in Sources */,

@@ -7,6 +7,4 @@
 
 import SwiftUI
 
-struct PatientCard: View {
-    
-}
+
