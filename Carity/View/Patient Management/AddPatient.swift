@@ -29,7 +29,7 @@ struct AddPatient: View {
     var body: some View {
        
             ZStack {
-                Color.colorPrimary
+                Color("mint")
                     .edgesIgnoringSafeArea(.bottom)
                 VStack(spacing: 10) {
                     Button {
@@ -45,10 +45,11 @@ struct AddPatient: View {
                             Image(systemName: "plus.circle.fill")
                                 .resizable()
                                 .frame(width: 100, height: 100)
-                                .foregroundColor(Color.colorButton)
+                                .foregroundColor(Color("tale_main"))
                         }
                         
                     }
+                    
                     .overlay(RoundedRectangle(cornerRadius: 100)
                         .stroke(Color.colorButton, lineWidth: 1)
                              

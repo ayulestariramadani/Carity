@@ -39,7 +39,7 @@ let notesData = [
         note_labelText: .condition_symptom,
         note_isReminded: false
     ),Note(
-        note_tittle: "Kontol Dokter Yusuf",
+        note_tittle: "Kontrol Dokter Yusuf",
         note_recordTime: "09.03 am",
         note_recordDate: "Tue, 23 May 23",
         note_labelSFSymbol: .assessment_consultation,

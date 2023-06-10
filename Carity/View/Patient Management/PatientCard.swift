@@ -32,3 +32,4 @@ struct PatientCard: View {
         }.padding(.horizontal, 8.0).frame(width: 358, height: 60).foregroundColor(Color("dark"))
     }
 }
+

@@ -30,9 +30,9 @@ struct OnBoarding: View {
                 .padding(.top, 60)
              
                 TabView {
-                    OnBoardingPage(title: "Hello!", text: "You will not be single-handedly spreading kindness. Carity will be there to help you do it, hand in hand.", image: "Onsatu", dismissButton: false)
-                    OnBoardingPage(title: "Manage your information!",text: "Time is free, but it’s priceless. Make notes quickly, and retrieve them just as quickly! Carity helps you save and organize all your caregiving information.", image: "Ondua", dismissButton: false)
-                    OnBoardingPage(title: "Share your information!", text: "Knowing your priorities is excellent. Busy and need to assign your caregiving tasks to others? Fret not, you can do it seamlessly with Carity.", image: "Ontiga", dismissButton: true)
+                    OnBoardingPage(title: "Hello!", text: "You will not be single-handedly spreading kindness. Carity will be there to help you do it, hand in hand.", image: "OnBoarding1", dismissButton: false)
+                    OnBoardingPage(title: "Manage your information!",text: "Time is free, but it’s priceless. Make notes quickly, and retrieve them just as quickly! Carity helps you save and organize all your caregiving information.", image: "OnBoarding2", dismissButton: false)
+                    OnBoardingPage(title: "Share your information!", text: "Knowing your priorities is excellent. Busy and need to assign your caregiving tasks to others? Fret not, you can do it seamlessly with Carity.", image: "OnBoarding3", dismissButton: true)
                 }
                 .tabViewStyle(PageTabViewStyle())
                 
