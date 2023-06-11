@@ -26,11 +26,13 @@ struct AddPatient: View {
     @State var shouldShowImagePicker = false
     @State var image: UIImage?
     
+    @State var showDeletePatientAlert = false
+    
     var body: some View {
        
             ZStack {
                 Color("mint")
-                    .edgesIgnoringSafeArea(.bottom)
+                    .edgesIgnoringSafeArea(.all)
                 VStack(spacing: 10) {
                     Button {
                         shouldShowImagePicker.toggle()
@@ -126,8 +128,38 @@ struct AddPatient: View {
                 }
             }
             .navigationBarBackButtonHidden(true)
-            
             .toolbar {
+                Menu{
+                    Button(action: {
+                        //share patient
+                    }) {
+                        Label("Share", systemImage: "square.and.arrow.up")
+                    }
+                    Button(action: {
+                        showDeletePatientAlert.toggle()
+                    }) {
+                        Label("Delete", systemImage: "trash")
+                    }
+                }label: {
+                    Image(systemName: "ellipsis.circle")
+                }.alert(isPresented: $showDeletePatientAlert) {
+                    Alert(
+                        title: Text("""
+                                    Delete Patient "\(nickName)"
+                                    """),
+                        message: Text("This patient will be deleted from all your devices. You can't undo this action."),
+                        primaryButton: .default(
+                            Text("Cancel").fontWeight(.bold),
+                            action: {}
+                        ),
+                        secondaryButton: .destructive(
+                            Text("Delete"),
+                            action: {
+                                //delete patient
+                            }
+                        )
+                    )
+                }
                 Button("Save"){}
             }
        
