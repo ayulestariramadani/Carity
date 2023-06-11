@@ -100,29 +100,32 @@ struct AddPatient: View {
                             Text($0)
                         }
                     }
-                    .cornerRadius(11)
-                    .padding(.horizontal)
-                    .listStyle(PlainListStyle())
-                    .background(Color.colorPrimary)
-                    .onTapGesture {}
-                    .onLongPressGesture(
-                        pressing: { isPressed in if isPressed { self.endEditing() } },
-                        perform: {})
+                   
                     
                     
-                }.autocorrectionDisabled(true)
-                .navigationViewStyle(StackNavigationViewStyle())
-                .fullScreenCover(isPresented: $shouldShowImagePicker, onDismiss: nil) {
-                    ImagePicker(image: $image)
-                        .ignoresSafeArea()
                 }
-            }
-            .navigationBarBackButtonHidden(true)
+                .foregroundColor(Color.black)
+                .pickerStyle(.menu)
+                
+                .cornerRadius(11)
+                .padding(.horizontal)
+                .listStyle(PlainListStyle())
+                .background(Color.colorPrimary)
+                .onTapGesture {}
+                .onLongPressGesture(
+                    pressing: { isPressed in if isPressed { self.endEditing() } },
+                    perform: {})
             
-            .toolbar {
-                Button("Save"){}
             }
+            .autocorrectionDisabled(true)
+            .navigationViewStyle(StackNavigationViewStyle())
+            .fullScreenCover(isPresented: $shouldShowImagePicker, onDismiss: nil) {
+                ImagePicker(image: $image)
+                    .ignoresSafeArea()
+            }
+            
         }
+        .navigationBarBackButtonHidden(true)
         .toolbar {
             Button("Save"){
                 self.isSaved.toggle()
