@@ -22,7 +22,7 @@ struct NoteList: View {
                 }
             }
         }.listStyle(.inset).cornerRadius(11).navigationBarTitle("Notes")
-            .searchable(text: $searchedText, prompt: "Search Note")
+            .searchable(text: $searchedText, prompt: "Search Note").autocorrectionDisabled(true)
     }
 }
 

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum LabelText: String, View {
+enum LabelText: String, View, CaseIterable {
     case condition_allergyAndIntolerance    = "Allergy and Intolerance"
     case condition_symptom                  = "Symptom"
     case assessment_consultation            = "Consultation"
@@ -16,7 +16,7 @@ enum LabelText: String, View {
     case treatment_foodAndNutrition         = "Food and Nutrition"
     case behaviour_habitAndPreference       = "Habit and Preference"
     case behaviour_ritual                   = "Ritual"
-    case other                              = ""
+    case other                              = "Others"
     
     var body: some View {
         Text(rawValue).foregroundColor(Color("tale_main"))

@@ -36,6 +36,8 @@ struct AddPatient: View {
     
     @State var isSaved = false
     
+    @State var showDeletePatientAlert = false
+    
     var body: some View {
         
         ZStack {
@@ -98,21 +100,27 @@ struct AddPatient: View {
                             Text($0)
                         }
                     }
-                    .foregroundColor(Color.black)
-                    .pickerStyle(.menu)
+                    .cornerRadius(11)
+                    .padding(.horizontal)
+                    .listStyle(PlainListStyle())
+                    .background(Color.colorPrimary)
+                    .onTapGesture {}
+                    .onLongPressGesture(
+                        pressing: { isPressed in if isPressed { self.endEditing() } },
+                        perform: {})
+                    
+                    
+                }.autocorrectionDisabled(true)
+                .navigationViewStyle(StackNavigationViewStyle())
+                .fullScreenCover(isPresented: $shouldShowImagePicker, onDismiss: nil) {
+                    ImagePicker(image: $image)
+                        .ignoresSafeArea()
                 }
-                .cornerRadius(11)
-                .padding(.horizontal)
-                .listStyle(PlainListStyle())
-                .background(Color.colorPrimary)
-                .onTapGesture {}
-                .onLongPressGesture(
-                    pressing: { isPressed in if isPressed { self.endEditing() } },
-                    perform: {})
             }
-            .navigationViewStyle(StackNavigationViewStyle())
-            .fullScreenCover(isPresented: $shouldShowImagePicker, onDismiss: nil) {
-                ImagePicker(image: $image)
+            .navigationBarBackButtonHidden(true)
+            
+            .toolbar {
+                Button("Save"){}
             }
         }
         .toolbar {

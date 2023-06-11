@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum LabelSFSymbol: String, View {
+enum LabelSFSymbol: String, View, CaseIterable {
     case condition_allergyAndIntolerance    = "exclamationmark.circle.fill"
     case condition_symptom                  = "bubbles.and.sparkles.fill"
     case assessment_consultation            = "list.bullet.clipboard.fill"
