@@ -34,26 +34,32 @@ struct SignUp: View {
             Text("A simple way to share your care")
                 .font(.system(size: 12))
             
-            Button {
-                self.isActive.toggle()
-            } label: {
-                HStack {
-                    Image(systemName: "apple.logo")
-                        .foregroundColor(.white)
-                    Text("Sign up with Apple")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        
-                }
-                .frame(height: 55)
-                .frame(maxWidth: .infinity)
-                .background(Color.black)
-                .cornerRadius(11)
-            }
-            .navigationDestination(isPresented: $isActive, destination: {
+            if !isSignedIn{
+                SignInButtonView()
+            }else{
                 AnnounceAddPatient()
-            })
-            .padding(.horizontal)
+            }
+            
+//            Button {
+//                self.isActive.toggle()
+//            } label: {
+//                HStack {
+//                    Image(systemName: "apple.logo")
+//                        .foregroundColor(.white)
+//                    Text("Sign up with Apple")
+//                        .font(.headline)
+//                        .foregroundColor(.white)
+//
+//                }
+//                .frame(height: 55)
+//                .frame(maxWidth: .infinity)
+//                .background(Color.black)
+//                .cornerRadius(11)
+//            }
+//            .navigationDestination(isPresented: $isActive, destination: {
+//                AnnounceAddPatient()
+//            })
+//            .padding(.horizontal)
            
             Spacer()
             Spacer()
