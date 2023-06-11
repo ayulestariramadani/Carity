@@ -10,126 +10,118 @@ import PhotosUI
 
 struct AddPatient: View {
     
+//    let numberFormatter: NumberFormatter = {
+//            let nf = NumberFormatter()
+//            nf.locale = Locale.current
+//            //Set up the NumberFormatter as you like...
+//            nf.numberStyle = .decimal
+//            nf.maximumFractionDigits = 2
+//            return nf
+//        }()
+    
     @State var nickName: String = ""
     @State var fullName: String = ""
-    @State var placeHolder = "Relation"
-    var dropDownList = ["","Friend", "GrandMother", "GrandFather", "Mom", "Dad","Son", "Daughter", "Uncle", "Auntie", "Siblings"]
     
     @State private var birthDate = Date.now
-    @State private var diseas: String = ""
+    @State private var disease: String = ""
     @State private var description: String = ""
     @State private var height: String = ""
     @State private var weight: String = ""
-    
+
     @State private var blood = "Blood Type"
-    @State private var bloodList = ["", "A", "B", "O", "AB"]
+    @State private var bloodList = ["", "A+", "B+", "O+", "AB+", "A", "B", "O", "AB", "A-", "B-", "O-", "AB-"]
+    
     @State var shouldShowImagePicker = false
     @State var image: UIImage?
     
+    @State var isSaved = false
+    
     var body: some View {
-       
-            ZStack {
-                Color("mint")
-                    .edgesIgnoringSafeArea(.bottom)
-                VStack(spacing: 10) {
-                    Button {
-                        shouldShowImagePicker.toggle()
-                    } label: {
+        
+        ZStack {
+            Color("mint").edgesIgnoringSafeArea(.all)
+            VStack(spacing: 10) {
+                Button {
+                    shouldShowImagePicker.toggle()
+                } label: {
+                    VStack{
                         if let image = self.image {
                             Image(uiImage: image)
                                 .resizable()
                                 .frame(width: 100, height: 100)
                                 .cornerRadius(100)
-                            
                         }else {
                             Image(systemName: "plus.circle.fill")
                                 .resizable()
                                 .frame(width: 100, height: 100)
                                 .foregroundColor(Color("tale_main"))
                         }
+                        Text("Edit Photo").fontWeight(.semibold)
                         
                     }
+                }
+                .overlay(RoundedRectangle(cornerRadius: 100)
+                    .stroke(Color.colorButton, lineWidth: 1)
+                )
+                .padding(.top,20)
+                Spacer()
+                List {
+                    TextField("Nick name", text: $nickName)
+                    TextField("Full name", text: $fullName)
                     
-                    .overlay(RoundedRectangle(cornerRadius: 100)
-                        .stroke(Color.colorButton, lineWidth: 1)
-                             
-                    )
-                    .padding(.top,20)
-                    
-                    Spacer()
-                    
-                    List {
-                        
-                        TextField("Nick name", text: $nickName)
-                        TextField("Full name", text: $fullName)
-                        
-                        Picker("Relation", selection: $placeHolder) {
-                            ForEach(dropDownList, id: \.self) {
-                                Text($0)
-                                    .foregroundColor(Color.black)
-                            }
-                        }
-                        .pickerStyle(.menu)
-                        
-                        
-                        DatePicker(selection: $birthDate, in: ...Date.now, displayedComponents: .date) {
-                            Text("Select a date")
-                        }
-                        
-                        
-                        
-                        TextField("Diseas", text: $diseas)
-                        TextField("Description", text: $description, axis: .vertical)
-                            .lineLimit(5, reservesSpace: true)
-                        
-                        
-                        HStack {
-                            TextField("Height", text: $height)
-                                .keyboardType(.numberPad)
-                            Text("Cm")
-                                .padding(.trailing, 5)
-                        }
-                        
-                        HStack {
-                            TextField("Weight", text: $weight)
-                                .keyboardType(.numberPad)
-                            Text("Kg")
-                                .padding(.trailing, 5)
-                        }
-                        Picker("Blood Type", selection: $blood) {
-                            ForEach(bloodList, id: \.self) {
-                                Text($0)
-                                    
-                            }
-                            
-                        }
-                        .foregroundColor(Color.black)
-                        .pickerStyle(.menu)
+                    DatePicker(selection: $birthDate, in: ...Date.now, displayedComponents: .date) {
+                        Text("Select a date")
                     }
-                    .cornerRadius(11)
-                    .padding(.horizontal)
-                    .listStyle(PlainListStyle())
-                    .background(Color.colorPrimary)
-                    .onTapGesture {}
-                    .onLongPressGesture(
-                        pressing: { isPressed in if isPressed { self.endEditing() } },
-                        perform: {})
                     
+                    TextField("Disease", text: $disease)
+                    TextField("Description", text: $description, axis: .vertical)
+                        .lineLimit(5, reservesSpace: true)
+                    HStack {
+                        Text("Height")
+                        TextField("Height",text: $height)
+                            .keyboardType(.decimalPad)
+                            .multilineTextAlignment(.trailing)
+                        Text("cm")
+                            .padding(.trailing, 4)
+                    }
                     
+                    HStack {
+                        Text("Weight")
+                        TextField("Weight",text: $weight)
+                            .keyboardType(.decimalPad)
+                            .multilineTextAlignment(.trailing)
+                        Text("kg ")
+                            .padding(.trailing, 5)
+                    }
+                    Picker("Blood Type", selection: $blood) {
+                        ForEach(bloodList, id: \.self) {
+                            Text($0)
+                        }
+                    }
+                    .foregroundColor(Color.black)
+                    .pickerStyle(.menu)
                 }
-                .navigationViewStyle(StackNavigationViewStyle())
-                .fullScreenCover(isPresented: $shouldShowImagePicker, onDismiss: nil) {
-                    ImagePicker(image: $image)
-                        .ignoresSafeArea()
-                }
+                .cornerRadius(11)
+                .padding(.horizontal)
+                .listStyle(PlainListStyle())
+                .background(Color.colorPrimary)
+                .onTapGesture {}
+                .onLongPressGesture(
+                    pressing: { isPressed in if isPressed { self.endEditing() } },
+                    perform: {})
             }
-            .navigationBarBackButtonHidden(true)
-            
-            .toolbar {
-                Button("Save"){}
+            .navigationViewStyle(StackNavigationViewStyle())
+            .fullScreenCover(isPresented: $shouldShowImagePicker, onDismiss: nil) {
+                ImagePicker(image: $image)
             }
-       
-        
+        }
+        .toolbar {
+            Button("Save"){
+                self.isSaved.toggle()
+            }.navigationDestination(isPresented: $isSaved) {
+                Dashboard()
+            }
+        }
     }
 }
 
@@ -140,48 +132,38 @@ struct AddPatient_Previews: PreviewProvider {
 }
 
 extension View {
-    func endEditing() {
+    func endEditing(){
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 
 
 struct ImagePicker: UIViewControllerRepresentable {
-    
     @Binding var image: UIImage?
-    
+
     private let controller = UIImagePickerController()
     
     func makeCoordinator() -> Coordinator {
         return Coordinator(parent: self)
     }
-    
     class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         
         let parent: ImagePicker
-        
         init(parent: ImagePicker) {
             self.parent = parent
         }
-        
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             parent.image = info[.originalImage] as? UIImage
             picker.dismiss(animated: true)
         }
-        
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
             picker.dismiss(animated: true)
         }
-        
     }
-    
     func makeUIViewController(context: Context) -> some UIViewController {
         controller.delegate = context.coordinator
         return controller
     }
-    
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context){
     }
-    
 }

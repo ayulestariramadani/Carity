@@ -78,7 +78,7 @@ struct Dashboard: View {
                     }
                 }
             }
-        }
+        }.navigationBarBackButtonHidden(true)
     }
 }
 

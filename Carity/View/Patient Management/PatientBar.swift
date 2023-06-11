@@ -97,9 +97,10 @@ struct PatientBar: View {
                     Label("Add Patient", systemImage: "plus")
                 }.frame(minWidth: 100, maxWidth: 128, minHeight: 28, maxHeight: 28).background(Color("tale_main")).foregroundColor(Color("white"))
                     .clipShape(RoundedRectangle(cornerRadius: 11))
-                    .navigationDestination(isPresented: $addPatientIsPresented, destination: {
+                    .sheet(isPresented: $addPatientIsPresented){
                         AddPatient()
-                    })
+                            .presentationDetents([.fraction(0.95)])
+                    }
                 Button(action:{
                     showSheetOfListPatients.toggle()
                 }){
