@@ -18,17 +18,18 @@ struct AddPatient: View {
     //            nf.maximumFractionDigits = 2
     //            return nf
     //        }()
+    @ObservedObject var viewModel: PatientViewModel
     
-    @State var nickName: String = ""
+    @State var nickname: String = ""
     @State var fullName: String = ""
     
-    @State private var birthDate = Date.now
-    @State private var disease: String = ""
-    @State private var description: String = ""
-    @State private var height: String = ""
-    @State private var weight: String = ""
+    @State var birthdate = Date.now
+    @State var disease: String = ""
+    @State var briefDescription: String = ""
+    @State var height: String = ""
+    @State var weight: String = ""
     
-    @State private var blood = "Blood Type"
+    @State var blood = "Blood Type"
     @State private var bloodList = ["", "A+", "B+", "O+", "AB+", "A", "B", "O", "AB", "A-", "B-", "O-", "AB-"]
     
     @State var shouldShowImagePicker = false
@@ -37,6 +38,46 @@ struct AddPatient: View {
     @State var isSaved = false
     
     @State var showDeletePatientAlert = false
+    
+    @State var status = "Adding"
+    
+    @State var patient : Patient?
+    
+    func updatePatientData() {
+        patient?.nickname = nickname
+        patient?.fullName = fullName
+        patient?.birthdate = birthdate
+        patient?.disease = disease
+        patient?.briefDescription = briefDescription
+        patient?.height = Int16(Int(height)!)
+        patient?.weight = Int16(Int(weight)!)
+        patient?.bloodType = blood
+        
+        viewModel.updatePatient(patient: patient!)
+    }
+    
+    func savePatientData() {
+        viewModel.addPatient(
+            nickname: nickname,
+            fullName: fullName,
+            birthdate: birthdate,
+            disease: disease,
+            briefDescription: briefDescription,
+            height: Int(height) ?? 0,
+            weight: Int(weight) ?? 0,
+            bloodType: blood
+        )
+        
+        nickname = ""
+        fullName = ""
+        birthdate = Date.now
+        disease = ""
+        briefDescription = ""
+        height = ""
+        weight = ""
+        blood = "Blood Type"
+        image = nil
+    }
     
     var body: some View {
         ZStack {
@@ -110,15 +151,15 @@ struct AddPatient: View {
                 .padding(.top,20)
                 Spacer()
                 List {
-                    TextField("Nick name", text: $nickName)
+                    TextField("Nick name", text: $nickname)
                     TextField("Full name", text: $fullName)
                     
-                    DatePicker(selection: $birthDate, in: ...Date.now, displayedComponents: .date) {
+                    DatePicker(selection: $birthdate, in: ...Date.now, displayedComponents: .date) {
                         Text("Select a date")
                     }
                     
                     TextField("Disease", text: $disease)
-                    TextField("Description", text: $description, axis: .vertical)
+                    TextField("Description", text: $briefDescription, axis: .vertical)
                         .lineLimit(5, reservesSpace: true)
                     HStack {
                         Text("Height")
@@ -181,6 +222,25 @@ struct AddPatient: View {
                             Label("Delete", systemImage: "trash")
                         }
                     }
+                }
+            label: {
+                Image(systemName: "ellipsis.circle")
+            }.alert(isPresented: $showDeletePatientAlert) {
+                Alert(
+                    title: Text("""
+                            Delete Patient "\(nickname)"
+                            """),
+                    message: Text("This patient will be deleted from all your devices. You can't undo this action."),
+                    primaryButton: .default(
+                        Text("Cancel").fontWeight(.bold),
+                        action: {}
+                    ),
+                    secondaryButton: .destructive(
+                        Text("Delete"),
+                        action: {
+                            //delete patient
+                            deletePatient()
+                        }
                 label: {
                     Image(systemName: "ellipsis.circle")
                 }.alert(isPresented: $showDeletePatientAlert) {
@@ -209,11 +269,16 @@ struct AddPatient: View {
                 }
             }
     }
+    
+    func deletePatient() {
+        viewModel.deletePatient(patient: patient!)
+        patient = viewModel.patientList[0]
+    }
 }
 
 struct AddPatient_Previews: PreviewProvider {
     static var previews: some View {
-        AddPatient()
+        AddPatient(viewModel: PatientViewModel())
     }
 }
 

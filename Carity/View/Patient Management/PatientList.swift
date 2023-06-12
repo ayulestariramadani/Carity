@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct PatientList: View {
-    @StateObject var viewModel = ListPatientViewModel()
+//    @StateObject var viewModel = ListPatientViewModel()
+    @ObservedObject var viewModel: PatientViewModel
+    @Binding var currentPatient : Patient?
     
     var body: some View {
         List{
-            ForEach(viewModel.patients,id:\.id) { patient in
+            ForEach(viewModel.patientList,id:\.id) { patient in
                 Button( action:{
                     //choose patient
+                    currentPatient = patient
                 }){
-                    PatientCard(image: patient.image, nickName: patient.nickName, disease: patient.disease)
+                    PatientCard(image: "patient", nickName: patient.nickname!, disease: patient.disease!)
                 }
             }
         }.listStyle(.inset).cornerRadius(11).navigationBarTitle("Patients")

@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct AnnounceAddPatient: View {
-    
+    @ObservedObject var viewModel: PatientViewModel
+
     @State var isNavigate: Bool = false
     
     var body: some View {
@@ -38,7 +39,7 @@ struct AnnounceAddPatient: View {
                     isNavigate.toggle()
                 }
                 .navigationDestination(isPresented: $isNavigate) {
-                    AddPatient()
+                    AddPatient(viewModel: PatientViewModel())
                 }
                 Spacer()
             }
@@ -48,6 +49,6 @@ struct AnnounceAddPatient: View {
 
 struct AnnounceAddPatient_Previews: PreviewProvider {
     static var previews: some View {
-        AnnounceAddPatient()
+        AnnounceAddPatient(viewModel: PatientViewModel())
     }
 }
