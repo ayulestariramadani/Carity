@@ -10,14 +10,14 @@ import PhotosUI
 
 struct AddPatient: View {
     
-//    let numberFormatter: NumberFormatter = {
-//            let nf = NumberFormatter()
-//            nf.locale = Locale.current
-//            //Set up the NumberFormatter as you like...
-//            nf.numberStyle = .decimal
-//            nf.maximumFractionDigits = 2
-//            return nf
-//        }()
+    //    let numberFormatter: NumberFormatter = {
+    //            let nf = NumberFormatter()
+    //            nf.locale = Locale.current
+    //            //Set up the NumberFormatter as you like...
+    //            nf.numberStyle = .decimal
+    //            nf.maximumFractionDigits = 2
+    //            return nf
+    //        }()
     
     @State var nickName: String = ""
     @State var fullName: String = ""
@@ -27,7 +27,7 @@ struct AddPatient: View {
     @State private var description: String = ""
     @State private var height: String = ""
     @State private var weight: String = ""
-
+    
     @State private var blood = "Blood Type"
     @State private var bloodList = ["", "A+", "B+", "O+", "AB+", "A", "B", "O", "AB", "A-", "B-", "O-", "AB-"]
     
@@ -35,6 +35,8 @@ struct AddPatient: View {
     @State var image: UIImage?
     
     @State var isSaved = false
+    
+    @State var showDeletePatientAlert = false
     
     var body: some View {
         
@@ -98,9 +100,13 @@ struct AddPatient: View {
                             Text($0)
                         }
                     }
-                    .foregroundColor(Color.black)
-                    .pickerStyle(.menu)
+                    
+                    
+                    
                 }
+                .foregroundColor(Color.black)
+                .pickerStyle(.menu)
+                
                 .cornerRadius(11)
                 .padding(.horizontal)
                 .listStyle(PlainListStyle())
@@ -109,17 +115,55 @@ struct AddPatient: View {
                 .onLongPressGesture(
                     pressing: { isPressed in if isPressed { self.endEditing() } },
                     perform: {})
+                
             }
+            .autocorrectionDisabled(true)
             .navigationViewStyle(StackNavigationViewStyle())
             .fullScreenCover(isPresented: $shouldShowImagePicker, onDismiss: nil) {
                 ImagePicker(image: $image)
+                    .ignoresSafeArea()
             }
-        }
+            
+        }.navigationBarBackButtonHidden(true)
         .toolbar {
-            Button("Save"){
-                self.isSaved.toggle()
-            }.navigationDestination(isPresented: $isSaved) {
-                Dashboard()
+            ToolbarItem(placement: .automatic){
+                Menu{
+                    Button(action: {
+                        //share patient
+                    }) {
+                        Label("Share", systemImage: "square.and.arrow.up")
+                    }
+                    Button(action: {
+                        showDeletePatientAlert.toggle()
+                    }) {
+                        Label("Delete", systemImage: "trash")
+                    }
+                }
+            label: {
+                Image(systemName: "ellipsis.circle")
+            }.alert(isPresented: $showDeletePatientAlert) {
+                Alert(
+                    title: Text("""
+                            Delete Patient "\(nickName)"
+                            """),
+                    message: Text("This patient will be deleted from all your devices. You can't undo this action."),
+                    primaryButton: .default(
+                        Text("Cancel").fontWeight(.bold),
+                        action: {}
+                    ),
+                    secondaryButton: .destructive(
+                        Text("Delete"),
+                        action: {
+                            //delete patient
+                        }
+                    )
+                )
+            }
+                Button("Save"){
+                    self.isSaved.toggle()
+                }.navigationDestination(isPresented: $isSaved) {
+                    Dashboard()
+                }
             }
         }
     }
@@ -140,7 +184,7 @@ extension View {
 
 struct ImagePicker: UIViewControllerRepresentable {
     @Binding var image: UIImage?
-
+    
     private let controller = UIImagePickerController()
     
     func makeCoordinator() -> Coordinator {
