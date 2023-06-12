@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PatientBar: View {
+    @ObservedObject var viewModel = PatientViewModel()
+    
     @State private var showSheetOfEditPatient : Bool = false
     @State private var showSheetOfListPatients : Bool = false
     
@@ -69,7 +71,7 @@ struct PatientBar: View {
         } primaryAction: {
             showSheetOfEditPatient.toggle()
         }.sheet(isPresented: $showSheetOfEditPatient){
-            AddPatient()
+            AddPatient(viewModel: PatientViewModel())
                 .presentationDetents([.fraction(0.95)])
         }
         .alert(isPresented: $showDeletePatientAlert) {
@@ -98,7 +100,7 @@ struct PatientBar: View {
                 }.frame(minWidth: 100, maxWidth: 128, minHeight: 28, maxHeight: 28).background(Color("tale_main")).foregroundColor(Color("white"))
                     .clipShape(RoundedRectangle(cornerRadius: 11))
                     .navigationDestination(isPresented: $addPatientIsPresented, destination: {
-                        AddPatient()
+                        AddPatient(viewModel: PatientViewModel())
                     })
                 Button(action:{
                     showSheetOfListPatients.toggle()
@@ -107,7 +109,7 @@ struct PatientBar: View {
                 }.frame(minWidth: 100, maxWidth: 128, minHeight: 28, maxHeight: 28).background(Color("sand_main")).foregroundColor(Color("dark"))
                     .clipShape(RoundedRectangle(cornerRadius: 11))
                     .sheet(isPresented: $showSheetOfListPatients){
-                        PatientList()
+                        PatientList(viewModel: viewModel)
                             .presentationDetents([.fraction(0.85)])
                     }
                 

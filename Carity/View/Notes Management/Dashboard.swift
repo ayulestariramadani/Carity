@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct Dashboard: View {
+    @ObservedObject var viewModel: PatientViewModel
+    
+    @State private var currentPatient: Patient?
+        
     //caregiver_data
     var caregiver_firstname : String = "Kim"
     
@@ -25,6 +29,10 @@ struct Dashboard: View {
     //alert
     @State private var showDeletePatientAlert : Bool = false
     
+    init() {
+        self.viewModel = PatientViewModel()
+    }
+    
     var body: some View {
         NavigationStack{
             ZStack{
@@ -35,7 +43,12 @@ struct Dashboard: View {
                         Spacer()
                     }
                     Spacer(minLength: 11)
-                    PatientBar(patient_nickname: $patient_nickname, patient_disease: $patient_disease, patientIsSelected: $patientIsSelected, addPatientIsPresented: $addPatientIsPresented, showDeletePatientAlert: $showDeletePatientAlert)
+                    PatientBar(
+                        patient_nickname: $patient_nickname,
+                        patient_disease: $patient_disease,
+                        patientIsSelected: $patientIsSelected,
+                        addPatientIsPresented: $addPatientIsPresented,
+                        showDeletePatientAlert: $showDeletePatientAlert)
                     Spacer(minLength: 11)
                     if total_note == 0 {
                         Button("\(Image(systemName: "square.and.pencil")) Add Note", action: {
@@ -78,6 +91,11 @@ struct Dashboard: View {
                     }
                 }
             }
+        }
+        .onAppear{
+            self.currentPatient = viewModel.patientList.first
+            self.patient_nickname = currentPatient?.nickname ?? ""
+            self.patient_disease = currentPatient?.disease ?? ""
         }
     }
 }

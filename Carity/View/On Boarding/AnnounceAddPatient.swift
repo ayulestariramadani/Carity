@@ -38,7 +38,7 @@ struct AnnounceAddPatient: View {
                     isNavigate.toggle()
                 }
                 .navigationDestination(isPresented: $isNavigate) {
-                    AddPatient()
+                    AddPatient(viewModel: PatientViewModel())
                 }
                 Spacer()
             }

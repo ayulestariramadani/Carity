@@ -9,15 +9,16 @@ import SwiftUI
 import PhotosUI
 
 struct AddPatient: View {
+    @ObservedObject var viewModel: PatientViewModel
     
-    @State var nickName: String = ""
+    @State var nickname: String = ""
     @State var fullName: String = ""
     @State var placeHolder = "Relation"
     var dropDownList = ["","Friend", "GrandMother", "GrandFather", "Mom", "Dad","Son", "Daughter", "Uncle", "Auntie", "Siblings"]
     
-    @State private var birthDate = Date.now
-    @State private var diseas: String = ""
-    @State private var description: String = ""
+    @State private var birthdate = Date.now
+    @State private var disease: String = ""
+    @State private var briefDescription: String = ""
     @State private var height: String = ""
     @State private var weight: String = ""
     
@@ -25,6 +26,37 @@ struct AddPatient: View {
     @State private var bloodList = ["", "A", "B", "O", "AB"]
     @State var shouldShowImagePicker = false
     @State var image: UIImage?
+    
+    func savePatientData() {
+        // Collect all the entered data
+        viewModel.addPatient(
+            nickname: nickname,
+            fullName: fullName,
+            birthdate: birthdate,
+            disease: disease,
+            briefDescription: briefDescription,
+            height: Int(height)!,
+            weight: Int(weight)!,
+            bloodType: blood
+        )
+        
+        // Perform operations to save the data
+        // For example, you can use a database or write to a file
+        
+        // TODO: Implement saving logic here
+        
+        // Reset the form after saving
+        nickname = ""
+        fullName = ""
+        placeHolder = "Relation"
+        birthdate = Date.now
+        disease = ""
+        briefDescription = ""
+        height = ""
+        weight = ""
+        blood = "Blood Type"
+        image = nil
+    }
     
     var body: some View {
        
@@ -60,7 +92,7 @@ struct AddPatient: View {
                     
                     List {
                         
-                        TextField("Nick name", text: $nickName)
+                        TextField("Nickname", text: $nickname)
                         TextField("Full name", text: $fullName)
                         
                         Picker("Relation", selection: $placeHolder) {
@@ -72,14 +104,14 @@ struct AddPatient: View {
                         .pickerStyle(.menu)
                         
                         
-                        DatePicker(selection: $birthDate, in: ...Date.now, displayedComponents: .date) {
+                        DatePicker(selection: $birthdate, in: ...Date.now, displayedComponents: .date) {
                             Text("Select a date")
                         }
                         
                         
                         
-                        TextField("Diseas", text: $diseas)
-                        TextField("Description", text: $description, axis: .vertical)
+                        TextField("Disease", text: $disease)
+                        TextField("Description", text: $briefDescription, axis: .vertical)
                             .lineLimit(5, reservesSpace: true)
                         
                         
@@ -126,7 +158,9 @@ struct AddPatient: View {
             .navigationBarBackButtonHidden(true)
             
             .toolbar {
-                Button("Save"){}
+                Button("Save"){
+                    savePatientData()
+                }
             }
        
         
@@ -135,7 +169,7 @@ struct AddPatient: View {
 
 struct AddPatient_Previews: PreviewProvider {
     static var previews: some View {
-        AddPatient()
+        AddPatient(viewModel: PatientViewModel())
     }
 }
 

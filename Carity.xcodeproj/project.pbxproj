@@ -25,6 +25,11 @@
 		5A945F962A1E024C00D0B60B /* CarityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A945F952A1E024C00D0B60B /* CarityTests.swift */; };
 		5A945FA02A1E024C00D0B60B /* CarityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A945F9F2A1E024C00D0B60B /* CarityUITests.swift */; };
 		5A945FA22A1E024C00D0B60B /* CarityUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A945FA12A1E024C00D0B60B /* CarityUITestsLaunchTests.swift */; };
+		A3A22C0A2A35F6A6008806B8 /* CarityModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A3A22C082A35F6A6008806B8 /* CarityModel.xcdatamodeld */; };
+		A3A22C0D2A35FA26008806B8 /* Patient+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A22C0B2A35FA26008806B8 /* Patient+CoreDataClass.swift */; };
+		A3A22C0E2A35FA26008806B8 /* Patient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A22C0C2A35FA26008806B8 /* Patient+CoreDataProperties.swift */; };
+		A3A22C102A35FA4A008806B8 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A22C0F2A35FA4A008806B8 /* Persistence.swift */; };
+		A3A22C122A35FAFC008806B8 /* PatientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A22C112A35FAFC008806B8 /* PatientViewModel.swift */; };
 		B129B97C2A30FAFA00E8C639 /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B129B97B2A30FAFA00E8C639 /* Dashboard.swift */; };
 		B129B9812A3129E300E8C639 /* PatientBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B129B9802A3129E300E8C639 /* PatientBar.swift */; };
 		B129B9832A317E1700E8C639 /* LabelSFSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B129B9822A317E1700E8C639 /* LabelSFSymbol.swift */; };
@@ -79,6 +84,11 @@
 		5A945F9B2A1E024C00D0B60B /* CarityUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarityUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A945F9F2A1E024C00D0B60B /* CarityUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarityUITests.swift; sourceTree = "<group>"; };
 		5A945FA12A1E024C00D0B60B /* CarityUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarityUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A3A22C092A35F6A6008806B8 /* CarityModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CarityModel.xcdatamodel; sourceTree = "<group>"; };
+		A3A22C0B2A35FA26008806B8 /* Patient+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patient+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A3A22C0C2A35FA26008806B8 /* Patient+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patient+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A3A22C0F2A35FA4A008806B8 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		A3A22C112A35FAFC008806B8 /* PatientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientViewModel.swift; sourceTree = "<group>"; };
 		B129B97B2A30FAFA00E8C639 /* Dashboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
 		B129B9802A3129E300E8C639 /* PatientBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientBar.swift; sourceTree = "<group>"; };
 		B129B9822A317E1700E8C639 /* LabelSFSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelSFSymbol.swift; sourceTree = "<group>"; };
@@ -137,6 +147,7 @@
 				B129B98C2A31924C00E8C639 /* ListNotesViewModel.swift */,
 				B129B9822A317E1700E8C639 /* LabelSFSymbol.swift */,
 				B129B9842A31845B00E8C639 /* LabelText.swift */,
+				A3A22C112A35FAFC008806B8 /* PatientViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -146,6 +157,7 @@
 			children = (
 				3793BC8A2A2F699B00A8E16B /* Patient.swift */,
 				B129B98A2A3190B600E8C639 /* Note.swift */,
+				A3A22C082A35F6A6008806B8 /* CarityModel.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -169,6 +181,9 @@
 		5A945F782A1E024A00D0B60B = {
 			isa = PBXGroup;
 			children = (
+				A3A22C0F2A35FA4A008806B8 /* Persistence.swift */,
+				A3A22C0B2A35FA26008806B8 /* Patient+CoreDataClass.swift */,
+				A3A22C0C2A35FA26008806B8 /* Patient+CoreDataProperties.swift */,
 				DAA083232A2DC685003A2632 /* README.md */,
 				5A945F832A1E024A00D0B60B /* Carity */,
 				5A945F942A1E024C00D0B60B /* CarityTests */,
@@ -404,11 +419,15 @@
 				B129B9892A31880200E8C639 /* NoteReview.swift in Sources */,
 				5A945F852A1E024A00D0B60B /* CarityApp.swift in Sources */,
 				3793BC812A2F693300A8E16B /* OnBoarding.swift in Sources */,
+				A3A22C0E2A35FA26008806B8 /* Patient+CoreDataProperties.swift in Sources */,
 				3793BC912A2F699C00A8E16B /* PrimaryButton.swift in Sources */,
 				3793BC802A2F693300A8E16B /* ListPatient.swift in Sources */,
 				3793BC902A2F699C00A8E16B /* Color+Ext.swift in Sources */,
+				A3A22C122A35FAFC008806B8 /* PatientViewModel.swift in Sources */,
 				3793BC882A2F698100A8E16B /* ListPatientViewModel.swift in Sources */,
 				B129B98D2A31924C00E8C639 /* ListNotesViewModel.swift in Sources */,
+				A3A22C0A2A35F6A6008806B8 /* CarityModel.xcdatamodeld in Sources */,
+				A3A22C0D2A35FA26008806B8 /* Patient+CoreDataClass.swift in Sources */,
 				3793BC822A2F693300A8E16B /* AddPatient.swift in Sources */,
 				B1CF3E9C2A31E38D005DFCFC /* Notes.swift in Sources */,
 				3793BC932A2F69CE00A8E16B /* AnnounceAddPatient.swift in Sources */,
@@ -419,6 +438,7 @@
 				B129B97C2A30FAFA00E8C639 /* Dashboard.swift in Sources */,
 				B129B9852A31845B00E8C639 /* LabelText.swift in Sources */,
 				3793BC8F2A2F699C00A8E16B /* Patient.swift in Sources */,
+				A3A22C102A35FA4A008806B8 /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -760,6 +780,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A3A22C082A35F6A6008806B8 /* CarityModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A3A22C092A35F6A6008806B8 /* CarityModel.xcdatamodel */,
+			);
+			currentVersion = A3A22C092A35F6A6008806B8 /* CarityModel.xcdatamodel */;
+			path = CarityModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5A945F792A1E024A00D0B60B /* Project object */;
 }
