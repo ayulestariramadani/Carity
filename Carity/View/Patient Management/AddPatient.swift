@@ -10,25 +10,26 @@ import PhotosUI
 
 struct AddPatient: View {
     
-//    let numberFormatter: NumberFormatter = {
-//            let nf = NumberFormatter()
-//            nf.locale = Locale.current
-//            //Set up the NumberFormatter as you like...
-//            nf.numberStyle = .decimal
-//            nf.maximumFractionDigits = 2
-//            return nf
-//        }()
+    //    let numberFormatter: NumberFormatter = {
+    //            let nf = NumberFormatter()
+    //            nf.locale = Locale.current
+    //            //Set up the NumberFormatter as you like...
+    //            nf.numberStyle = .decimal
+    //            nf.maximumFractionDigits = 2
+    //            return nf
+    //        }()
+    @ObservedObject var viewModel: PatientViewModel
     
-    @State var nickName: String = ""
+    @State var nickname: String = ""
     @State var fullName: String = ""
     
-    @State private var birthDate = Date.now
-    @State private var disease: String = ""
-    @State private var description: String = ""
-    @State private var height: String = ""
-    @State private var weight: String = ""
-
-    @State private var blood = "Blood Type"
+    @State var birthdate = Date.now
+    @State var disease: String = ""
+    @State var briefDescription: String = ""
+    @State var height: String = ""
+    @State var weight: String = ""
+    
+    @State var blood = "Blood Type"
     @State private var bloodList = ["", "A+", "B+", "O+", "AB+", "A", "B", "O", "AB", "A-", "B-", "O-", "AB-"]
     
     @State var shouldShowImagePicker = false
@@ -38,11 +39,102 @@ struct AddPatient: View {
     
     @State var showDeletePatientAlert = false
     
-    var body: some View {
+    @State var status = "Adding"
+    
+    @State var patient : Patient?
+    
+    func updatePatientData() {
+        patient?.nickname = nickname
+        patient?.fullName = fullName
+        patient?.birthdate = birthdate
+        patient?.disease = disease
+        patient?.briefDescription = briefDescription
+        patient?.height = Int16(Int(height)!)
+        patient?.weight = Int16(Int(weight)!)
+        patient?.bloodType = blood
         
+        viewModel.updatePatient(patient: patient!)
+        isSaved = true
+    }
+    
+    func savePatientData() {
+        viewModel.addPatient(
+            nickname: nickname,
+            fullName: fullName,
+            birthdate: birthdate,
+            disease: disease,
+            briefDescription: briefDescription,
+            height: Int(height) ?? 0,
+            weight: Int(weight) ?? 0,
+            bloodType: blood
+        )
+        
+        nickname = ""
+        fullName = ""
+        birthdate = Date.now
+        disease = ""
+        briefDescription = ""
+        height = ""
+        weight = ""
+        blood = "Blood Type"
+        image = nil
+    }
+    
+    var body: some View {
         ZStack {
             Color("mint").edgesIgnoringSafeArea(.all)
             VStack(spacing: 10) {
+                
+                HStack{
+                    Spacer()
+                    Menu{
+                        Button(action: {
+                            //share patient
+                        }) {
+                            Label("Share", systemImage: "square.and.arrow.up")
+                        }
+                        Button(action: {
+                            showDeletePatientAlert.toggle()
+                        }) {
+                            Label("Delete", systemImage: "trash")
+                        }
+                    }
+                label: {
+                    Image(systemName: "ellipsis.circle")
+                }.alert(isPresented: $showDeletePatientAlert) {
+                    Alert(
+                        title: Text("""
+                            Delete Patient "\(nickname)"
+                            """),
+                        message: Text("This patient will be deleted from all your devices. You can't undo this action."),
+                        primaryButton: .default(
+                            Text("Cancel").fontWeight(.bold),
+                            action: {}
+                        ),
+                        secondaryButton: .destructive(
+                            Text("Delete"),
+                            action: {
+                                //delete patient
+                                deletePatient()
+                                endEditing()
+                            }
+                        )
+                    )
+                }
+                    Button("Save"){
+                        if(status == "Adding"){
+                            savePatientData()
+                        }
+                        else{
+                            updatePatientData()
+                        }
+                        self.isSaved.toggle()
+                    }.navigationDestination(isPresented: $isSaved) {
+                        Dashboard()
+                    }
+                }.font(.system(.headline))
+                .padding([.top, .leading, .trailing], 16.0)
+                
                 Button {
                     shouldShowImagePicker.toggle()
                 } label: {
@@ -58,7 +150,7 @@ struct AddPatient: View {
                                 .frame(width: 100, height: 100)
                                 .foregroundColor(Color("tale_main"))
                         }
-                        Text("Edit Photo").fontWeight(.semibold)
+                        Text("Edit Photo")
                         
                     }
                 }
@@ -68,15 +160,15 @@ struct AddPatient: View {
                 .padding(.top,20)
                 Spacer()
                 List {
-                    TextField("Nick name", text: $nickName)
+                    TextField("Nick name", text: $nickname)
                     TextField("Full name", text: $fullName)
                     
-                    DatePicker(selection: $birthDate, in: ...Date.now, displayedComponents: .date) {
+                    DatePicker(selection: $birthdate, in: ...Date.now, displayedComponents: .date) {
                         Text("Select a date")
                     }
                     
                     TextField("Disease", text: $disease)
-                    TextField("Description", text: $description, axis: .vertical)
+                    TextField("Description", text: $briefDescription, axis: .vertical)
                         .lineLimit(5, reservesSpace: true)
                     HStack {
                         Text("Height")
@@ -100,7 +192,7 @@ struct AddPatient: View {
                             Text($0)
                         }
                     }
-                   
+                    
                     
                     
                 }
@@ -115,7 +207,7 @@ struct AddPatient: View {
                 .onLongPressGesture(
                     pressing: { isPressed in if isPressed { self.endEditing() } },
                     perform: {})
-            
+                
             }
             .autocorrectionDisabled(true)
             .navigationViewStyle(StackNavigationViewStyle())
@@ -124,21 +216,120 @@ struct AddPatient: View {
                     .ignoresSafeArea()
             }
             
-        }
-        .navigationBarBackButtonHidden(true)
-        .toolbar {
-            Button("Save"){
-                self.isSaved.toggle()
-            }.navigationDestination(isPresented: $isSaved) {
-                Dashboard()
-            }
-        }
+        }.navigationBarBackButtonHidden(true)
+//            .toolbar {
+//                ToolbarItem(placement: .automatic){
+//                    Menu{
+//                        Button(action: {
+//                            //share patient
+//                        }) {
+//                            Label("Share", systemImage: "square.and.arrow.up")
+//                        }
+//                        Button(action: {
+//                            showDeletePatientAlert.toggle()
+//                        }) {
+//                            Label("Delete", systemImage: "trash")
+//                        }
+//                    }
+//                label: {
+//                    Image(systemName: "ellipsis.circle")
+//                }.alert(isPresented: $showDeletePatientAlert) {
+//                    Alert(
+//                        title: Text("""
+//                                Delete Patient "\(nickname)"
+//                                """),
+//                        message: Text("This patient will be deleted from all your devices. You can't undo this action."),
+//                        primaryButton: .default(
+//                            Text("Cancel").fontWeight(.bold),
+//                            action: {}
+//                        ),
+//                        secondaryButton: .destructive(
+//                            Text("Delete"),
+//                            action: {
+//                                //delete patient
+//                                deletePatient()
+//                            }
+//                        )
+//                    )
+//                }
+//                    Button("Save"){
+//                        if(status == "Adding"){
+//                            savePatientData()
+//                        }
+//                        else{
+//                            updatePatientData()
+//                        }
+//                        self.isSaved.toggle()
+//                    }.navigationDestination(isPresented: $isSaved) {
+//                        Dashboard()
+//                    }
+//                }
+//            }
+//            .toolbar {
+//                ToolbarItem(placement: .automatic){
+//                    Menu{
+//                        Button(action: {
+//                            //share patient
+//                        }) {
+//                            Label("Share", systemImage: "square.and.arrow.up")
+//                        }
+//                        Button(action: {
+//                            showDeletePatientAlert.toggle()
+//                        }) {
+//                            Label("Delete", systemImage: "trash")
+//                        }
+//                    }
+//                }
+//            label: {
+//                Image(systemName: "ellipsis.circle")
+//            }.alert(isPresented: $showDeletePatientAlert) {
+//                Alert(
+//                    title: Text("""
+//                            Delete Patient "\(nickname)"
+//                            """),
+//                    message: Text("This patient will be deleted from all your devices. You can't undo this action."),
+//                    primaryButton: .default(
+//                        Text("Cancel").fontWeight(.bold),
+//                        action: {}
+//                    ),
+//                    secondaryButton: .destructive(
+//                        Text("Delete"),
+//                        action: {
+//                            //delete patient
+//                            deletePatient()
+//                        }
+//                label: {
+//                    Image(systemName: "ellipsis.circle")
+//                }.alert(isPresented: $showDeletePatientAlert) {
+//                    Alert(
+//                        title: Text("""
+//                            Delete Patient "\(nickName)"
+//                            """),
+//                        message: Text("This patient will be deleted from all your devices. You can't undo this action."),
+//                        primaryButton: .default(
+//                            Text("Cancel").fontWeight(.bold),
+//                            action: {}
+//                        ),
+//                        secondaryButton: .destructive(
+//                            Text("Delete"),
+//                            action: {
+//                                //delete patient
+//                            }
+//                        )
+//                    )
+//                }
+//                    Button("Save"){
+//                        self.isSaved.toggle()
+//                    }.navigationDestination(isPresented: $isSaved) {
+//                        Dashboard()
+//                    }
+//                }
+//            }
     }
-}
-
-struct AddPatient_Previews: PreviewProvider {
-    static var previews: some View {
-        AddPatient()
+    
+    func deletePatient() {
+        viewModel.deletePatient(patient: patient!)
+        patient = viewModel.patientList[0]
     }
 }
 
@@ -151,7 +342,7 @@ extension View {
 
 struct ImagePicker: UIViewControllerRepresentable {
     @Binding var image: UIImage?
-
+    
     private let controller = UIImagePickerController()
     
     func makeCoordinator() -> Coordinator {

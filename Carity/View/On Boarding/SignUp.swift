@@ -34,6 +34,12 @@ struct SignUp: View {
             Text("A simple way to share your care")
                 .font(.system(size: 12))
             
+//            if !isSignedIn{
+//                SignInButtonView()
+//            }else{
+//                AnnounceAddPatient()
+//            }
+            
             Button {
                 self.isActive.toggle()
             } label: {
@@ -43,7 +49,7 @@ struct SignUp: View {
                     Text("Sign up with Apple")
                         .font(.headline)
                         .foregroundColor(.white)
-                        
+
                 }
                 .frame(height: 55)
                 .frame(maxWidth: .infinity)
@@ -51,7 +57,7 @@ struct SignUp: View {
                 .cornerRadius(11)
             }
             .navigationDestination(isPresented: $isActive, destination: {
-                AnnounceAddPatient()
+                AnnounceAddPatient(viewModel: PatientViewModel())
             })
             .padding(.horizontal)
            

@@ -21,9 +21,16 @@ struct AddNotePage: View {
     @State private var isToggleCategory = false
     @State private var selectedCategory : String = ""
     
+    @State var isSaved = false
+    
+    @AppStorage("total_note")
+    var total_note: Int = 0
+    
+    
     let values: [String] = LabelText.allCases.map { $0.rawValue }
     let icons: [String] = LabelSFSymbol.allCases.map { $0.rawValue }
     //    let colors: [String] = ["condition", "condition", "assessment", "assessment", "treatment", "treatment", "behaviour", "behaviour", "50%"]
+   
     
     func getIndex (label : String) -> Int {
         if label != "" {
@@ -56,7 +63,9 @@ struct AddNotePage: View {
             List {
                 Section {
                     Button {
-                        isToggleCategory.toggle()
+                        withAnimation{
+                            isToggleCategory.toggle()
+                        }
                     } label: {
                         HStack {
                             if selectedCategory == "" {
@@ -69,7 +78,7 @@ struct AddNotePage: View {
                                 Text(selectedCategory)
                             }
                             Spacer()
-                            Image(systemName: "chevron.down")
+                            Image(systemName: "chevron.down").foregroundColor(Color.blue).rotation3DEffect(.degrees(isToggleCategory ? 180 : 0), axis: (x: 1, y: 0, z: 0))
                         }.foregroundColor(Color.black)
                     }
                     if isToggleCategory {
@@ -99,13 +108,15 @@ struct AddNotePage: View {
                     
                     if isToggle {
                         Button(action: {
-                            isDateVisible.toggle()
+                            withAnimation{
+                                isDateVisible.toggle()
+                            }
                         }) {
                             HStack{
                                 Text("\(Image(systemName: "calendar"))").foregroundColor(Color("tale_main"))
                                 Text("\(formattedDate(selectedDate))")
                                 Spacer()
-                                Text("\(Image(systemName: "chevron.down"))").foregroundColor(Color.blue)
+                                Text("\(Image(systemName: "chevron.down"))").foregroundColor(Color.blue).rotation3DEffect(.degrees(isDateVisible ? 180 : 0), axis: (x: 1, y: 0, z: 0))
                             }.foregroundColor(Color.black)
                         }
                         
@@ -122,13 +133,15 @@ struct AddNotePage: View {
                         }
                         
                         Button(action: {
-                            isTimeVisible.toggle()
+                            withAnimation{
+                                isTimeVisible.toggle()
+                            }
                         }) {
                             HStack{
                                 Text("\(Image(systemName: "alarm"))").foregroundColor(Color("tale_main"))
                                 Text("\(formattedTime(from: selectedTime))")
                                 Spacer()
-                                Text("\(Image(systemName: "chevron.down"))").foregroundColor(Color.blue)
+                                Text("\(Image(systemName: "chevron.down"))").foregroundColor(Color.blue).rotation3DEffect(.degrees(isTimeVisible ? 180 : 0), axis: (x: 1, y: 0, z: 0))
                             }.foregroundColor(Color.black)
                         }
                         
@@ -150,8 +163,17 @@ struct AddNotePage: View {
                     TextField("Note", text: $note, axis: .vertical)
                         .lineLimit(23, reservesSpace: true)
                 }.autocorrectionDisabled(true)
-            }.pickerStyle(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=Picker Style@*/DefaultPickerStyle()/*@END_MENU_TOKEN@*/)
+            }.pickerStyle(WheelPickerStyle())
         }.background(Color("mint"))
+            .toolbar{
+                Button("Save"){
+                    self.isSaved.toggle()
+                    total_note = total_note + 1
+                   
+                }.navigationDestination(isPresented: $isSaved) {
+                    Dashboard()
+                }
+            }
     }
     
     func formattedDate(_ date: Date) -> String {
@@ -165,11 +187,5 @@ struct AddNotePage: View {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
         return formatter.string(from: date)
-    }
-}
-
-struct AddNotePage_Previews: PreviewProvider {
-    static var previews: some View {
-        AddNotePage()
     }
 }

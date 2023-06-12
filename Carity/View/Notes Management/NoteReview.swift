@@ -17,6 +17,7 @@ struct NoteReview: View {
     var isThisWeek : Bool
     var isRemindedSoon : Bool
     
+    @State private var isNavigate : Bool = false
     //    @Binding var searchedText : String
     
     var body: some View {
@@ -26,10 +27,11 @@ struct NoteReview: View {
                 Spacer()
                 if isThisWeek {
                     Button("Show More", action: {
-                        //to notes
+                        isNavigate.toggle()
                     }).font(.footnote).fontWeight(.semibold)
                 }
             }.foregroundColor(Color("dark"))
+                .navigationDestination(isPresented: $isNavigate){Notes(searchedText: "")}
             ForEach(viewModel.notes,id:\.id) { note in
                 Button( action:{
                     //edit note
