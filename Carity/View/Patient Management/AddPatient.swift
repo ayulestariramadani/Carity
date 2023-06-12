@@ -20,6 +20,8 @@ struct AddPatient: View {
     //        }()
     @ObservedObject var viewModel: PatientViewModel
     
+    @Environment(\.managedObjectContext) var managedObjectContext
+    
     @State var nickname: String = ""
     @State var fullName: String = ""
     

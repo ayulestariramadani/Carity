@@ -19,7 +19,7 @@ struct PatientList: View {
                     //choose patient
                     currentPatient = patient
                 }){
-                    PatientCard(image: "patient", nickName: patient.nickname!, disease: patient.disease!)
+                    PatientCard(image: "patient", nickName: patient.nickname ?? "", disease: patient.disease!)
                 }
             }
         }.listStyle(.inset).cornerRadius(11).navigationBarTitle("Patients")
