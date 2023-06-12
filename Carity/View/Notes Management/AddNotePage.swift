@@ -63,7 +63,9 @@ struct AddNotePage: View {
             List {
                 Section {
                     Button {
-                        isToggleCategory.toggle()
+                        withAnimation{
+                            isToggleCategory.toggle()
+                        }
                     } label: {
                         HStack {
                             if selectedCategory == "" {
@@ -76,7 +78,7 @@ struct AddNotePage: View {
                                 Text(selectedCategory)
                             }
                             Spacer()
-                            Image(systemName: "chevron.down")
+                            Image(systemName: "chevron.down").foregroundColor(Color.blue).rotation3DEffect(.degrees(isToggleCategory ? 180 : 0), axis: (x: 1, y: 0, z: 0))
                         }.foregroundColor(Color.black)
                     }
                     if isToggleCategory {
@@ -106,13 +108,15 @@ struct AddNotePage: View {
                     
                     if isToggle {
                         Button(action: {
-                            isDateVisible.toggle()
+                            withAnimation{
+                                isDateVisible.toggle()
+                            }
                         }) {
                             HStack{
                                 Text("\(Image(systemName: "calendar"))").foregroundColor(Color("tale_main"))
                                 Text("\(formattedDate(selectedDate))")
                                 Spacer()
-                                Text("\(Image(systemName: "chevron.down"))").foregroundColor(Color.blue)
+                                Text("\(Image(systemName: "chevron.down"))").foregroundColor(Color.blue).rotation3DEffect(.degrees(isDateVisible ? 180 : 0), axis: (x: 1, y: 0, z: 0))
                             }.foregroundColor(Color.black)
                         }
                         
@@ -129,13 +133,15 @@ struct AddNotePage: View {
                         }
                         
                         Button(action: {
-                            isTimeVisible.toggle()
+                            withAnimation{
+                                isTimeVisible.toggle()
+                            }
                         }) {
                             HStack{
                                 Text("\(Image(systemName: "alarm"))").foregroundColor(Color("tale_main"))
                                 Text("\(formattedTime(from: selectedTime))")
                                 Spacer()
-                                Text("\(Image(systemName: "chevron.down"))").foregroundColor(Color.blue)
+                                Text("\(Image(systemName: "chevron.down"))").foregroundColor(Color.blue).rotation3DEffect(.degrees(isTimeVisible ? 180 : 0), axis: (x: 1, y: 0, z: 0))
                             }.foregroundColor(Color.black)
                         }
                         
