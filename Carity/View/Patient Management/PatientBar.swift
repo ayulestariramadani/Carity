@@ -82,7 +82,8 @@ struct PatientBar: View {
                     )
                 })
         } primaryAction: {
-//            showSheetOfEditPatient.toggle()
+            showSheetOfEditPatient.toggle()
+//            editPatientIsPresented.toggle()
         }.sheet(isPresented: $showSheetOfEditPatient){
             AddPatient(
                 viewModel: PatientViewModel(),
@@ -93,7 +94,9 @@ struct PatientBar: View {
                 briefDescription: currentPatient?.briefDescription ?? "",
                 height: String(Int(currentPatient?.height ?? Int16(0))),
                 weight: String(Int(currentPatient?.weight ?? Int16(0))),
-                blood: currentPatient?.bloodType ?? ""
+                blood: currentPatient?.bloodType ?? "",
+                status: "Editing",
+                patient: currentPatient
             )
             .presentationDetents([.fraction(0.95)])
         }

@@ -54,6 +54,7 @@ struct AddPatient: View {
         patient?.bloodType = blood
         
         viewModel.updatePatient(patient: patient!)
+        isSaved = true
     }
     
     func savePatientData() {
@@ -103,7 +104,7 @@ struct AddPatient: View {
                 }.alert(isPresented: $showDeletePatientAlert) {
                     Alert(
                         title: Text("""
-                            Delete Patient "\(nickName)"
+                            Delete Patient "\(nickname)"
                             """),
                         message: Text("This patient will be deleted from all your devices. You can't undo this action."),
                         primaryButton: .default(
@@ -114,11 +115,19 @@ struct AddPatient: View {
                             Text("Delete"),
                             action: {
                                 //delete patient
+                                deletePatient()
+                                endEditing()
                             }
                         )
                     )
                 }
                     Button("Save"){
+                        if(status == "Adding"){
+                            savePatientData()
+                        }
+                        else{
+                            updatePatientData()
+                        }
                         self.isSaved.toggle()
                     }.navigationDestination(isPresented: $isSaved) {
                         Dashboard()
@@ -208,77 +217,119 @@ struct AddPatient: View {
             }
             
         }.navigationBarBackButtonHidden(true)
-            .toolbar {
-                ToolbarItem(placement: .automatic){
-                    Menu{
-                        Button(action: {
-                            //share patient
-                        }) {
-                            Label("Share", systemImage: "square.and.arrow.up")
-                        }
-                        Button(action: {
-                            showDeletePatientAlert.toggle()
-                        }) {
-                            Label("Delete", systemImage: "trash")
-                        }
-                    }
-                }
-            label: {
-                Image(systemName: "ellipsis.circle")
-            }.alert(isPresented: $showDeletePatientAlert) {
-                Alert(
-                    title: Text("""
-                            Delete Patient "\(nickname)"
-                            """),
-                    message: Text("This patient will be deleted from all your devices. You can't undo this action."),
-                    primaryButton: .default(
-                        Text("Cancel").fontWeight(.bold),
-                        action: {}
-                    ),
-                    secondaryButton: .destructive(
-                        Text("Delete"),
-                        action: {
-                            //delete patient
-                            deletePatient()
-                        }
-                label: {
-                    Image(systemName: "ellipsis.circle")
-                }.alert(isPresented: $showDeletePatientAlert) {
-                    Alert(
-                        title: Text("""
-                            Delete Patient "\(nickName)"
-                            """),
-                        message: Text("This patient will be deleted from all your devices. You can't undo this action."),
-                        primaryButton: .default(
-                            Text("Cancel").fontWeight(.bold),
-                            action: {}
-                        ),
-                        secondaryButton: .destructive(
-                            Text("Delete"),
-                            action: {
-                                //delete patient
-                            }
-                        )
-                    )
-                }
-                    Button("Save"){
-                        self.isSaved.toggle()
-                    }.navigationDestination(isPresented: $isSaved) {
-                        Dashboard()
-                    }
-                }
-            }
+//            .toolbar {
+//                ToolbarItem(placement: .automatic){
+//                    Menu{
+//                        Button(action: {
+//                            //share patient
+//                        }) {
+//                            Label("Share", systemImage: "square.and.arrow.up")
+//                        }
+//                        Button(action: {
+//                            showDeletePatientAlert.toggle()
+//                        }) {
+//                            Label("Delete", systemImage: "trash")
+//                        }
+//                    }
+//                label: {
+//                    Image(systemName: "ellipsis.circle")
+//                }.alert(isPresented: $showDeletePatientAlert) {
+//                    Alert(
+//                        title: Text("""
+//                                Delete Patient "\(nickname)"
+//                                """),
+//                        message: Text("This patient will be deleted from all your devices. You can't undo this action."),
+//                        primaryButton: .default(
+//                            Text("Cancel").fontWeight(.bold),
+//                            action: {}
+//                        ),
+//                        secondaryButton: .destructive(
+//                            Text("Delete"),
+//                            action: {
+//                                //delete patient
+//                                deletePatient()
+//                            }
+//                        )
+//                    )
+//                }
+//                    Button("Save"){
+//                        if(status == "Adding"){
+//                            savePatientData()
+//                        }
+//                        else{
+//                            updatePatientData()
+//                        }
+//                        self.isSaved.toggle()
+//                    }.navigationDestination(isPresented: $isSaved) {
+//                        Dashboard()
+//                    }
+//                }
+//            }
+//            .toolbar {
+//                ToolbarItem(placement: .automatic){
+//                    Menu{
+//                        Button(action: {
+//                            //share patient
+//                        }) {
+//                            Label("Share", systemImage: "square.and.arrow.up")
+//                        }
+//                        Button(action: {
+//                            showDeletePatientAlert.toggle()
+//                        }) {
+//                            Label("Delete", systemImage: "trash")
+//                        }
+//                    }
+//                }
+//            label: {
+//                Image(systemName: "ellipsis.circle")
+//            }.alert(isPresented: $showDeletePatientAlert) {
+//                Alert(
+//                    title: Text("""
+//                            Delete Patient "\(nickname)"
+//                            """),
+//                    message: Text("This patient will be deleted from all your devices. You can't undo this action."),
+//                    primaryButton: .default(
+//                        Text("Cancel").fontWeight(.bold),
+//                        action: {}
+//                    ),
+//                    secondaryButton: .destructive(
+//                        Text("Delete"),
+//                        action: {
+//                            //delete patient
+//                            deletePatient()
+//                        }
+//                label: {
+//                    Image(systemName: "ellipsis.circle")
+//                }.alert(isPresented: $showDeletePatientAlert) {
+//                    Alert(
+//                        title: Text("""
+//                            Delete Patient "\(nickName)"
+//                            """),
+//                        message: Text("This patient will be deleted from all your devices. You can't undo this action."),
+//                        primaryButton: .default(
+//                            Text("Cancel").fontWeight(.bold),
+//                            action: {}
+//                        ),
+//                        secondaryButton: .destructive(
+//                            Text("Delete"),
+//                            action: {
+//                                //delete patient
+//                            }
+//                        )
+//                    )
+//                }
+//                    Button("Save"){
+//                        self.isSaved.toggle()
+//                    }.navigationDestination(isPresented: $isSaved) {
+//                        Dashboard()
+//                    }
+//                }
+//            }
     }
     
     func deletePatient() {
         viewModel.deletePatient(patient: patient!)
         patient = viewModel.patientList[0]
-    }
-}
-
-struct AddPatient_Previews: PreviewProvider {
-    static var previews: some View {
-        AddPatient(viewModel: PatientViewModel())
     }
 }
 
