@@ -21,9 +21,16 @@ struct AddNotePage: View {
     @State private var isToggleCategory = false
     @State private var selectedCategory : String = ""
     
+    @State var isSaved = false
+    
+    @AppStorage("total_note")
+    var total_note: Int = 0
+    
+    
     let values: [String] = LabelText.allCases.map { $0.rawValue }
     let icons: [String] = LabelSFSymbol.allCases.map { $0.rawValue }
     //    let colors: [String] = ["condition", "condition", "assessment", "assessment", "treatment", "treatment", "behaviour", "behaviour", "50%"]
+   
     
     func getIndex (label : String) -> Int {
         if label != "" {
@@ -150,8 +157,17 @@ struct AddNotePage: View {
                     TextField("Note", text: $note, axis: .vertical)
                         .lineLimit(23, reservesSpace: true)
                 }.autocorrectionDisabled(true)
-            }.pickerStyle(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=Picker Style@*/DefaultPickerStyle()/*@END_MENU_TOKEN@*/)
+            }.pickerStyle(WheelPickerStyle())
         }.background(Color("mint"))
+            .toolbar{
+                Button("Save"){
+                    self.isSaved.toggle()
+                    total_note = total_note + 1
+                   
+                }.navigationDestination(isPresented: $isSaved) {
+                    Dashboard()
+                }
+            }
     }
     
     func formattedDate(_ date: Date) -> String {
@@ -165,11 +181,5 @@ struct AddNotePage: View {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
         return formatter.string(from: date)
-    }
-}
-
-struct AddNotePage_Previews: PreviewProvider {
-    static var previews: some View {
-        AddNotePage()
     }
 }

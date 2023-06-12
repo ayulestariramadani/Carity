@@ -8,20 +8,24 @@
 import SwiftUI
 
 struct Notes: View {
+    @AppStorage("total_note")
+    var total_note: Int = 0
     
     @State var searchedText : String
     
     //note_data
-    var total_note : Int = 8
-    
+//    var total_note : Int = 0
     //alert
     @State private var showDeletePatientAlert : Bool = false
+    @State private var isSaved : Bool = false
+    
     
     var body: some View {
         NavigationStack{
             ZStack{
                 Color("mint").ignoresSafeArea()
                 VStack{
+                    
                     if total_note == 0 {
                         Button("\(Image(systemName: "square.and.pencil")) Add Note", action: {
                             //add Note
@@ -47,7 +51,7 @@ struct Notes: View {
                         }
                         Spacer()
                         Button( action:{
-                            //add Notes
+                            self.isSaved.toggle()
                         }){
                             Image(systemName: "square.and.pencil")
                             Text("Add Note")
@@ -55,6 +59,8 @@ struct Notes: View {
                             .foregroundColor(Color("tale_main"))
                             .clipShape(RoundedRectangle(cornerRadius: 11))
                             .font(.subheadline).fontWeight(.bold)
+                    }.navigationDestination(isPresented: $isSaved) {
+                        AddNotePage()
                     }
                 }
             }
