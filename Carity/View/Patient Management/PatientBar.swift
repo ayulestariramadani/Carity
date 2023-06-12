@@ -6,19 +6,25 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct PatientBar: View {
     @ObservedObject var viewModel = PatientViewModel()
+    @ObservedObject var patient: Patient
     
     @State private var showSheetOfEditPatient : Bool = false
     @State private var showSheetOfListPatients : Bool = false
+    @State private var share: CKShare?
+    @State private var showShareSheet = false
+    @State private var showEditSheet = false
+    private let stack = CoreDataStack.shared
     
-//    @Binding var patient_nickname : String
-//    @Binding var patient_disease : String
+    //    @Binding var patient_nickname : String
+    //    @Binding var patient_disease : String
     @Binding var currentPatient : Patient?
     
     @Binding var patientIsSelected : Bool
-        
+    
     @Binding var addPatientIsPresented : Bool
     @State var editPatientIsPresented : Bool = false
     
@@ -30,6 +36,13 @@ struct PatientBar: View {
             Menu{
                 Button(action: {
                     //share patient
+                    if !stack.isShared(object: patient) {
+                        Task {
+                            await createShare(patient)
+                        }
+                    }
+                    showShareSheet = true
+                    
                 }) {
                     Label("Share", systemImage: "square.and.arrow.up")
                 }
@@ -83,7 +96,7 @@ struct PatientBar: View {
                 })
         } primaryAction: {
             showSheetOfEditPatient.toggle()
-//            editPatientIsPresented.toggle()
+            //            editPatientIsPresented.toggle()
         }.sheet(isPresented: $showSheetOfEditPatient){
             AddPatient(
                 viewModel: PatientViewModel(),
@@ -100,6 +113,14 @@ struct PatientBar: View {
             )
             .presentationDetents([.fraction(0.95)])
         }
+        .sheet(isPresented: $showShareSheet, content: {
+            if let share = share {
+                CloudSharingView(share: share, container: stack.ckContainer, patient: patient)
+            }
+        })
+        .onAppear(perform: {
+          self.share = stack.getShare(patient)
+        })
         .alert(isPresented: $showDeletePatientAlert) {
             Alert(
                 title: Text("""
@@ -149,5 +170,66 @@ struct PatientBar: View {
     func deletePatient() {
         viewModel.deletePatient(patient: currentPatient!)
         currentPatient = viewModel.patientList[0]
+    }
+}
+
+extension PatientBar {
+    private func createShare(_ patient: Patient) async {
+        do {
+            let (_, share, _) = try await stack.persistentContainer.share([patient], to: nil)
+            share[CKShare.SystemFieldKey.title] = patient.description
+            self.share = share
+        } catch {
+            print("Failed to create share")
+        }
+    }
+    
+    private func string(for permission: CKShare.ParticipantPermission) -> String {
+        switch permission {
+        case .unknown:
+            return "Unknown"
+        case .none:
+            return "None"
+        case .readOnly:
+            return "Read-Only"
+        case .readWrite:
+            return "Read-Write"
+        @unknown default:
+            fatalError("A new value added to CKShare.Participant.Permission")
+        }
+    }
+    
+    private func string(for role: CKShare.ParticipantRole) -> String {
+        switch role {
+        case .owner:
+            return "Owner"
+        case .privateUser:
+            return "Private User"
+        case .publicUser:
+            return "Public User"
+        case .unknown:
+            return "Unknown"
+        @unknown default:
+            fatalError("A new value added to CKShare.Participant.Role")
+        }
+    }
+    
+    private func string(for acceptanceStatus: CKShare.ParticipantAcceptanceStatus) -> String {
+        switch acceptanceStatus {
+        case .accepted:
+            return "Accepted"
+        case .removed:
+            return "Removed"
+        case .pending:
+            return "Invited"
+        case .unknown:
+            return "Unknown"
+        @unknown default:
+            fatalError("A new value added to CKShare.Participant.AcceptanceStatus")
+        }
+    }
+    
+    private var canEdit: Bool {
+        stack.canEdit(object: patient)
     }
 }
