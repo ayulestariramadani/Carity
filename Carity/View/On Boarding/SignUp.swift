@@ -57,7 +57,7 @@ struct SignUp: View {
                 .cornerRadius(11)
             }
             .navigationDestination(isPresented: $isActive, destination: {
-                AnnounceAddPatient()
+                AnnounceAddPatient(viewModel: PatientViewModel())
             })
             .padding(.horizontal)
            

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Patient: Identifiable {
+struct PatientDummy: Identifiable {
     var id = UUID()
     var nickName: String
     var fullName: String
