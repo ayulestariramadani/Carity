@@ -13,6 +13,7 @@ struct PatientBar: View {
     @State private var showSheetOfEditPatient : Bool = false
     @State private var showSheetOfListPatients : Bool = false
     
+    @Binding var currentPatient : Patient?
     @Binding var patient_nickname : String
     @Binding var patient_disease : String
     
@@ -54,13 +55,13 @@ struct PatientBar: View {
                     .clipShape(Circle())
                 VStack{
                     HStack(alignment: .bottom){
-                        Text(patient_nickname).foregroundColor(Color("dark")).lineLimit(nil)
+                        Text(currentPatient?.nickname ?? "").foregroundColor(Color("dark")).lineLimit(nil)
                         Spacer()
                         
                     }.font(.body).fontWeight(/*@START_MENU_TOKEN@*/.semibold/*@END_MENU_TOKEN@*/)
                     Spacer()
                     HStack{
-                        Text(patient_disease).font(.footnote).fontWeight(/*@START_MENU_TOKEN@*/.semibold/*@END_MENU_TOKEN@*/).foregroundColor(Color("tale_main"))
+                        Text(currentPatient?.disease ?? "").font(.footnote).fontWeight(/*@START_MENU_TOKEN@*/.semibold/*@END_MENU_TOKEN@*/).foregroundColor(Color("tale_main"))
                         Spacer()
                     }
                 }
@@ -109,7 +110,7 @@ struct PatientBar: View {
                 }.frame(minWidth: 100, maxWidth: 128, minHeight: 28, maxHeight: 28).background(Color("sand_main")).foregroundColor(Color("dark"))
                     .clipShape(RoundedRectangle(cornerRadius: 11))
                     .sheet(isPresented: $showSheetOfListPatients){
-                        PatientList(viewModel: viewModel)
+                        PatientList(viewModel: viewModel, currentPatient: $currentPatient)
                             .presentationDetents([.fraction(0.85)])
                     }
                 

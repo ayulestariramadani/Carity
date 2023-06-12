@@ -12,6 +12,12 @@ class PatientViewModel: ObservableObject {
     private let viewContext = PersistenceController.shared.viewContext
     @Published var patientList: [Patient] = []
     
+    @Published var selectedPatient: Patient? {
+        didSet {
+            fetchPatientData()
+        }
+    }
+    
     init() {
         fetchPatientData()
     }
