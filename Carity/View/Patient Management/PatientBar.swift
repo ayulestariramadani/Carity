@@ -39,11 +39,6 @@ struct PatientBar: View {
                     Label("Delete", systemImage: "trash")
                 }
                 Button(action: {
-                    //duplicate patient
-                }) {
-                    Label("Duplicate", systemImage: "plus.square.on.square")
-                }
-                Button(action: {
                     showSheetOfEditPatient.toggle()
                     //edit patient
                 }) {

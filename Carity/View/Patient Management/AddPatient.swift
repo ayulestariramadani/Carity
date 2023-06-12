@@ -80,10 +80,52 @@ struct AddPatient: View {
     }
     
     var body: some View {
-        
         ZStack {
             Color("mint").edgesIgnoringSafeArea(.all)
             VStack(spacing: 10) {
+                
+                HStack{
+                    Spacer()
+                    Menu{
+                        Button(action: {
+                            //share patient
+                        }) {
+                            Label("Share", systemImage: "square.and.arrow.up")
+                        }
+                        Button(action: {
+                            showDeletePatientAlert.toggle()
+                        }) {
+                            Label("Delete", systemImage: "trash")
+                        }
+                    }
+                label: {
+                    Image(systemName: "ellipsis.circle")
+                }.alert(isPresented: $showDeletePatientAlert) {
+                    Alert(
+                        title: Text("""
+                            Delete Patient "\(nickName)"
+                            """),
+                        message: Text("This patient will be deleted from all your devices. You can't undo this action."),
+                        primaryButton: .default(
+                            Text("Cancel").fontWeight(.bold),
+                            action: {}
+                        ),
+                        secondaryButton: .destructive(
+                            Text("Delete"),
+                            action: {
+                                //delete patient
+                            }
+                        )
+                    )
+                }
+                    Button("Save"){
+                        self.isSaved.toggle()
+                    }.navigationDestination(isPresented: $isSaved) {
+                        Dashboard()
+                    }
+                }.font(.system(.headline))
+                .padding([.top, .leading, .trailing], 16.0)
+                
                 Button {
                     shouldShowImagePicker.toggle()
                 } label: {
@@ -99,7 +141,7 @@ struct AddPatient: View {
                                 .frame(width: 100, height: 100)
                                 .foregroundColor(Color("tale_main"))
                         }
-                        Text("Edit Photo").fontWeight(.semibold)
+                        Text("Edit Photo")
                         
                     }
                 }
@@ -166,18 +208,19 @@ struct AddPatient: View {
             }
             
         }.navigationBarBackButtonHidden(true)
-        .toolbar {
-            ToolbarItem(placement: .automatic){
-                Menu{
-                    Button(action: {
-                        //share patient
-                    }) {
-                        Label("Share", systemImage: "square.and.arrow.up")
-                    }
-                    Button(action: {
-                        showDeletePatientAlert.toggle()
-                    }) {
-                        Label("Delete", systemImage: "trash")
+            .toolbar {
+                ToolbarItem(placement: .automatic){
+                    Menu{
+                        Button(action: {
+                            //share patient
+                        }) {
+                            Label("Share", systemImage: "square.and.arrow.up")
+                        }
+                        Button(action: {
+                            showDeletePatientAlert.toggle()
+                        }) {
+                            Label("Delete", systemImage: "trash")
+                        }
                     }
                 }
             label: {
@@ -198,16 +241,33 @@ struct AddPatient: View {
                             //delete patient
                             deletePatient()
                         }
+                label: {
+                    Image(systemName: "ellipsis.circle")
+                }.alert(isPresented: $showDeletePatientAlert) {
+                    Alert(
+                        title: Text("""
+                            Delete Patient "\(nickName)"
+                            """),
+                        message: Text("This patient will be deleted from all your devices. You can't undo this action."),
+                        primaryButton: .default(
+                            Text("Cancel").fontWeight(.bold),
+                            action: {}
+                        ),
+                        secondaryButton: .destructive(
+                            Text("Delete"),
+                            action: {
+                                //delete patient
+                            }
+                        )
                     )
-                )
-            }
-                Button("Save"){
-                    self.isSaved.toggle()
-                }.navigationDestination(isPresented: $isSaved) {
-                    Dashboard()
+                }
+                    Button("Save"){
+                        self.isSaved.toggle()
+                    }.navigationDestination(isPresented: $isSaved) {
+                        Dashboard()
+                    }
                 }
             }
-        }
     }
     
     func deletePatient() {
