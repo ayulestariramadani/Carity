@@ -10,25 +10,40 @@ import PhotosUI
 
 struct AddPatient: View {
     @ObservedObject var viewModel: PatientViewModel
-    
     @State var nickname: String = ""
     @State var fullName: String = ""
     @State var placeHolder = "Relation"
     var dropDownList = ["","Friend", "GrandMother", "GrandFather", "Mom", "Dad","Son", "Daughter", "Uncle", "Auntie", "Siblings"]
     
-    @State private var birthdate = Date.now
-    @State private var disease: String = ""
-    @State private var briefDescription: String = ""
-    @State private var height: String = ""
-    @State private var weight: String = ""
+    @State var birthdate = Date.now
+    @State var disease: String = ""
+    @State var briefDescription: String = ""
+    @State var height: String = ""
+    @State var weight: String = ""
     
-    @State private var blood = "Blood Type"
+    @State var blood = "Blood Type"
     @State private var bloodList = ["", "A", "B", "O", "AB"]
     @State var shouldShowImagePicker = false
     @State var image: UIImage?
     
+    @State var status = "Adding"
+    
+    @State var patient : Patient?
+    
+    func updatePatientData() {
+        patient?.nickname = nickname
+        patient?.fullName = fullName
+        patient?.birthdate = birthdate
+        patient?.disease = disease
+        patient?.briefDescription = briefDescription
+        patient?.height = Int16(Int(height)!)
+        patient?.weight = Int16(Int(weight)!)
+        patient?.bloodType = blood
+        
+        viewModel.updatePatient(patient: patient!)
+    }
+    
     func savePatientData() {
-        // Collect all the entered data
         viewModel.addPatient(
             nickname: nickname,
             fullName: fullName,
@@ -40,12 +55,6 @@ struct AddPatient: View {
             bloodType: blood
         )
         
-        // Perform operations to save the data
-        // For example, you can use a database or write to a file
-        
-        // TODO: Implement saving logic here
-        
-        // Reset the form after saving
         nickname = ""
         fullName = ""
         placeHolder = "Relation"
@@ -159,7 +168,12 @@ struct AddPatient: View {
             
             .toolbar {
                 Button("Save"){
-                    savePatientData()
+                    if(status == "Adding"){
+                        savePatientData()
+                    }
+                    else{
+                        updatePatientData()
+                    }
                 }
             }
        

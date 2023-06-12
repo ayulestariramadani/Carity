@@ -45,8 +45,6 @@ struct Dashboard: View {
                     Spacer(minLength: 11)
                     PatientBar(
                         currentPatient: $currentPatient,
-                        patient_nickname: $patient_nickname,
-                        patient_disease: $patient_disease,
                         patientIsSelected: $patientIsSelected,
                         addPatientIsPresented: $addPatientIsPresented,
                         showDeletePatientAlert: $showDeletePatientAlert)

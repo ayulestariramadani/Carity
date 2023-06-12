@@ -14,12 +14,11 @@ struct PatientBar: View {
     @State private var showSheetOfListPatients : Bool = false
     
     @Binding var currentPatient : Patient?
-    @Binding var patient_nickname : String
-    @Binding var patient_disease : String
     
     @Binding var patientIsSelected : Bool
         
     @Binding var addPatientIsPresented : Bool
+    @State var editPatientIsPresented : Bool = false
     //alert
     @Binding var showDeletePatientAlert : Bool
     
@@ -69,16 +68,44 @@ struct PatientBar: View {
                 .frame(minWidth: 247, maxWidth: 259, minHeight: 67, maxHeight: 67)
                 .background(patientIsSelected ? Color("sand_main") : Color("white"))
                 .clipShape(RoundedRectangle(cornerRadius: 11))
+                .navigationDestination(isPresented: $editPatientIsPresented, destination: {
+                    AddPatient(
+                        viewModel: PatientViewModel(),
+                        nickname: currentPatient?.nickname ?? "",
+                        fullName: currentPatient?.fullName ?? "",
+                        birthdate: currentPatient?.birthdate ?? Date.now,
+                        disease: currentPatient?.disease ?? "",
+                        briefDescription: currentPatient?.briefDescription ?? "",
+                        height: String(Int(currentPatient?.height ?? Int16(0))),
+                        weight: String(Int(currentPatient?.weight ?? Int16(0))),
+                        blood: currentPatient?.bloodType ?? "",
+                        status: "Editing",
+                        patient: currentPatient
+                    )
+                })
         } primaryAction: {
-            showSheetOfEditPatient.toggle()
+//            showSheetOfEditPatient.toggle()
+            editPatientIsPresented.toggle()
         }.sheet(isPresented: $showSheetOfEditPatient){
-            AddPatient(viewModel: PatientViewModel())
-                .presentationDetents([.fraction(0.95)])
+//            AddPatient(viewModel: PatientViewModel())
+//                .presentationDetents([.fraction(0.95)])
+            AddPatient(
+                viewModel: PatientViewModel(),
+                nickname: currentPatient?.nickname ?? "",
+                fullName: currentPatient?.fullName ?? "",
+                birthdate: currentPatient?.birthdate ?? Date.now,
+                disease: currentPatient?.disease ?? "",
+                briefDescription: currentPatient?.briefDescription ?? "",
+                height: String(Int(currentPatient?.height ?? Int16(0))),
+                weight: String(Int(currentPatient?.weight ?? Int16(0))),
+                blood: currentPatient?.bloodType ?? ""
+            )
+            .presentationDetents([.fraction(0.95)])
         }
         .alert(isPresented: $showDeletePatientAlert) {
             Alert(
                 title: Text("""
-                            Delete Patient "\(patient_nickname)"
+                            Delete Patient "\(currentPatient?.nickname ?? "")"
                             """),
                 message: Text("This patient will be deleted from all your devices. You can't undo this action."),
                 primaryButton: .default(
