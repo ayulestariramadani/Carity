@@ -202,6 +202,7 @@
 		5A945F832A1E024A00D0B60B /* Carity */ = {
 			isa = PBXGroup;
 			children = (
+				DA7D74652A3788A700573E4A /* Core Data */,
 				3793BC8D2A2F699C00A8E16B /* Component */,
 				3793BC8B2A2F699C00A8E16B /* Extension */,
 				3793BC892A2F699B00A8E16B /* Model */,
@@ -273,6 +274,13 @@
 				3793BC922A2F69CE00A8E16B /* AnnounceAddPatient.swift */,
 			);
 			path = "On Boarding";
+			sourceTree = "<group>";
+		};
+		DA7D74652A3788A700573E4A /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Core Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -595,7 +603,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Carity/Preview Content\"";
-				DEVELOPMENT_TEAM = T272QWF53N;
+				DEVELOPMENT_TEAM = LC2HFZR2DS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Carity;
