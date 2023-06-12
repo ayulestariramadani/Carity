@@ -116,6 +116,7 @@ struct PatientBar: View {
                     Text("Delete"),
                     action: {
                         //delete patient
+                        deletePatient()
                     }
                 )
             )
@@ -144,5 +145,10 @@ struct PatientBar: View {
             }.font(.caption).fontWeight(.medium)
             
         }
+    }
+    
+    func deletePatient() {
+        viewModel.deletePatient(patient: currentPatient!)
+        currentPatient = viewModel.patientList[0]
     }
 }

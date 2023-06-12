@@ -50,8 +50,8 @@ struct AddPatient: View {
             birthdate: birthdate,
             disease: disease,
             briefDescription: briefDescription,
-            height: Int(height)!,
-            weight: Int(weight)!,
+            height: Int(height) ?? 0,
+            weight: Int(weight) ?? 0,
             bloodType: blood
         )
         
