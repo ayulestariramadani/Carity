@@ -9,11 +9,11 @@ import SwiftUI
 
 struct Dashboard: View {
     @ObservedObject var viewModel: PatientViewModel
-    
+//    @ObservedObject var noteViewModel: NoteViewModel
     @State private var currentPatient: Patient?
     
-    @AppStorage("total_note")
-    var total_note: Int = 0
+//    @AppStorage("total_note")
+    @State var total_note: Int
     
     //caregiver_data
     var caregiver_firstname : String = "Kim"
@@ -32,6 +32,7 @@ struct Dashboard: View {
     
     init() {
         self.viewModel = PatientViewModel()
+        total_note = 0
     }
 
     var body: some View {
@@ -60,12 +61,14 @@ struct Dashboard: View {
                             
                         }.listStyle(.plain).cornerRadius(11).hidden()
                     } else {
-                        NoteReview(review_tittle: "Notes of The Week", isThisWeek : true, isRemindedSoon : false
-                                   //                               , searchedText: $searchedText
-                        )
-                        NoteReview(review_tittle: "Upcoming Notes", isThisWeek : false, isRemindedSoon : true
-                                   //                               , searchedText: $searchedText
-                        )
+                        // DI SINI VIEW UNTUK NOTE
+//                        NoteReview(review_tittle: "Notes of The Week", isThisWeek : true, isRemindedSoon : false
+//                                   //                               , searchedText: $searchedText
+//                        )
+//                        NoteReview(review_tittle: "Upcoming Notes", isThisWeek : false, isRemindedSoon : true
+//                                   //                               , searchedText: $searchedText
+//                        )
+                        NoteList(viewModel: NoteViewModel(patient: currentPatient ?? viewModel.patientList[0]))
                     }
                 }
                 .padding(.horizontal, 16.0).lineLimit(nil)
@@ -73,8 +76,8 @@ struct Dashboard: View {
             }
             .onAppear{
                 self.currentPatient = viewModel.patientList.first
-                self.patient_nickname = currentPatient?.nickname ?? ""
-                self.patient_disease = currentPatient?.disease ?? ""
+                self.total_note = currentPatient?.notes?.count ?? 0
+                print("di dashboard: ", total_note)
             }
             .toolbar(){
                 ToolbarItem(placement: .bottomBar){
@@ -96,7 +99,8 @@ struct Dashboard: View {
                             .font(.subheadline).fontWeight(.bold)
                     }
                 }
-            }.navigationDestination(isPresented: $isNavigate){AddNotePage()}
+            }
+            .navigationDestination(isPresented: $isNavigate){AddNotePage(viewModel: NoteViewModel(patient: currentPatient ?? viewModel.patientList[0]), total_note: $total_note)}
         }.navigationBarBackButtonHidden(true)
     }
 }

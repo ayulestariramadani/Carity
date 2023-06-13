@@ -32,4 +32,12 @@ enum LabelSFSymbol: String, View, CaseIterable {
             Image(systemName: rawValue).foregroundColor(Color("50%"))
         }
     }
+    
+    func stringValue() -> String {
+        return self.rawValue
+    }
+    
+    static func fromString(_ symbol: String) -> LabelSFSymbol? {
+        return self.allCases.first { $0.rawValue == symbol }
+    }
 }

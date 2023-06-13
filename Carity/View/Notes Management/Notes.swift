@@ -35,8 +35,7 @@ struct Notes: View {
                             
                         }.listStyle(.plain).cornerRadius(11).hidden()
                     } else {
-                        NoteList(searchedText: $searchedText)
-                    }
+                        Notes(searchedText: "")}
                 }
                 .padding(.horizontal, 16.0).lineLimit(nil)
                 
@@ -60,7 +59,7 @@ struct Notes: View {
                             .clipShape(RoundedRectangle(cornerRadius: 11))
                             .font(.subheadline).fontWeight(.bold)
                     }.navigationDestination(isPresented: $isSaved) {
-                        AddNotePage()
+//                        AddNotePage(viewModel: NoteViewModel(patient: Patient?))
                     }
                 }
             }

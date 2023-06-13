@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22E252" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Ap" representedClassName="Ap" syncable="YES" codeGenerationType="class"/>
+    <entity name="Note" representedClassName="Note" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isReminderActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="labelSFSymbol" optional="YES" attributeType="String"/>
+        <attribute name="labelText" optional="YES" attributeType="String"/>
+        <attribute name="recordDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="recordTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="reminderTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="patient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Patient" inverseName="notes" inverseEntity="Patient"/>
+    </entity>
     <entity name="Patient" representedClassName="Patient" syncable="YES">
         <attribute name="birthdate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="bloodType" optional="YES" attributeType="String"/>
@@ -11,5 +22,6 @@
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="nickname" optional="YES" attributeType="String"/>
         <attribute name="weight" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Note" inverseName="patient" inverseEntity="Note"/>
     </entity>
 </model>

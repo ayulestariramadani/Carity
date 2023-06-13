@@ -26,9 +26,12 @@
 		5A945FA22A1E024C00D0B60B /* CarityUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A945FA12A1E024C00D0B60B /* CarityUITestsLaunchTests.swift */; };
 		A3A22C152A3720F3008806B8 /* CarityModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A3A22C132A3720F3008806B8 /* CarityModel.xcdatamodeld */; };
 		A3A22C182A372248008806B8 /* Patient+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A22C162A372248008806B8 /* Patient+CoreDataClass.swift */; };
-		A3A22C192A372248008806B8 /* Patient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A22C172A372248008806B8 /* Patient+CoreDataProperties.swift */; };
 		A3A22C1B2A3722D7008806B8 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A22C1A2A3722D7008806B8 /* Persistence.swift */; };
 		A3A22C1D2A3722F8008806B8 /* PatientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A22C1C2A3722F8008806B8 /* PatientViewModel.swift */; };
+		A3A22C202A378129008806B8 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A22C1E2A378129008806B8 /* Note+CoreDataClass.swift */; };
+		A3A22C212A378129008806B8 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A22C1F2A378129008806B8 /* Note+CoreDataProperties.swift */; };
+		A3A22C232A3781DE008806B8 /* Patient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A22C222A3781DE008806B8 /* Patient+CoreDataProperties.swift */; };
+		A3A22C252A378214008806B8 /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A22C242A378214008806B8 /* NoteViewModel.swift */; };
 		B129B97C2A30FAFA00E8C639 /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B129B97B2A30FAFA00E8C639 /* Dashboard.swift */; };
 		B129B9812A3129E300E8C639 /* PatientBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B129B9802A3129E300E8C639 /* PatientBar.swift */; };
 		B129B9832A317E1700E8C639 /* LabelSFSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B129B9822A317E1700E8C639 /* LabelSFSymbol.swift */; };
@@ -84,9 +87,12 @@
 		5A945FA12A1E024C00D0B60B /* CarityUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarityUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A3A22C142A3720F3008806B8 /* CarityModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CarityModel.xcdatamodel; sourceTree = "<group>"; };
 		A3A22C162A372248008806B8 /* Patient+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patient+CoreDataClass.swift"; sourceTree = "<group>"; };
-		A3A22C172A372248008806B8 /* Patient+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patient+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A3A22C1A2A3722D7008806B8 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		A3A22C1C2A3722F8008806B8 /* PatientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientViewModel.swift; sourceTree = "<group>"; };
+		A3A22C1E2A378129008806B8 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A3A22C1F2A378129008806B8 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A3A22C222A3781DE008806B8 /* Patient+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patient+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A3A22C242A378214008806B8 /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
 		B129B97B2A30FAFA00E8C639 /* Dashboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
 		B129B9802A3129E300E8C639 /* PatientBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientBar.swift; sourceTree = "<group>"; };
 		B129B9822A317E1700E8C639 /* LabelSFSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelSFSymbol.swift; sourceTree = "<group>"; };
@@ -145,6 +151,7 @@
 				B129B9822A317E1700E8C639 /* LabelSFSymbol.swift */,
 				B129B9842A31845B00E8C639 /* LabelText.swift */,
 				A3A22C1C2A3722F8008806B8 /* PatientViewModel.swift */,
+				A3A22C242A378214008806B8 /* NoteViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -178,9 +185,11 @@
 		5A945F782A1E024A00D0B60B = {
 			isa = PBXGroup;
 			children = (
+				A3A22C222A3781DE008806B8 /* Patient+CoreDataProperties.swift */,
+				A3A22C1E2A378129008806B8 /* Note+CoreDataClass.swift */,
+				A3A22C1F2A378129008806B8 /* Note+CoreDataProperties.swift */,
 				A3A22C1A2A3722D7008806B8 /* Persistence.swift */,
 				A3A22C162A372248008806B8 /* Patient+CoreDataClass.swift */,
-				A3A22C172A372248008806B8 /* Patient+CoreDataProperties.swift */,
 				DAA083232A2DC685003A2632 /* README.md */,
 				5A945F832A1E024A00D0B60B /* Carity */,
 				5A945F942A1E024C00D0B60B /* CarityTests */,
@@ -243,9 +252,9 @@
 		B129B97F2A31298A00E8C639 /* Notes Management */ = {
 			isa = PBXGroup;
 			children = (
-				B129B97B2A30FAFA00E8C639 /* Dashboard.swift */,
 				B129B9862A3185B800E8C639 /* NoteCard.swift */,
 				B129B9882A31880200E8C639 /* NoteReview.swift */,
+				B129B97B2A30FAFA00E8C639 /* Dashboard.swift */,
 				B1CF3E9B2A31E38D005DFCFC /* Notes.swift */,
 				B1CF3E9D2A32D994005DFCFC /* NoteList.swift */,
 				374C69C42A34460B002AD496 /* AddNotePage.swift */,
@@ -422,17 +431,20 @@
 				3793BC902A2F699C00A8E16B /* Color+Ext.swift in Sources */,
 				3793BC882A2F698100A8E16B /* ListPatientViewModel.swift in Sources */,
 				B129B98D2A31924C00E8C639 /* ListNotesViewModel.swift in Sources */,
+				A3A22C252A378214008806B8 /* NoteViewModel.swift in Sources */,
 				3793BC822A2F693300A8E16B /* AddPatient.swift in Sources */,
 				A3A22C1B2A3722D7008806B8 /* Persistence.swift in Sources */,
+				A3A22C212A378129008806B8 /* Note+CoreDataProperties.swift in Sources */,
+				A3A22C232A3781DE008806B8 /* Patient+CoreDataProperties.swift in Sources */,
 				A3A22C1D2A3722F8008806B8 /* PatientViewModel.swift in Sources */,
 				B1CF3E9C2A31E38D005DFCFC /* Notes.swift in Sources */,
 				3793BC932A2F69CE00A8E16B /* AnnounceAddPatient.swift in Sources */,
 				B1CF3EA32A33243E005DFCFC /* PatientCard.swift in Sources */,
 				B129B98B2A3190B600E8C639 /* Note.swift in Sources */,
 				B1CF3E9E2A32D994005DFCFC /* NoteList.swift in Sources */,
-				A3A22C192A372248008806B8 /* Patient+CoreDataProperties.swift in Sources */,
 				B129B9832A317E1700E8C639 /* LabelSFSymbol.swift in Sources */,
 				B129B97C2A30FAFA00E8C639 /* Dashboard.swift in Sources */,
+				A3A22C202A378129008806B8 /* Note+CoreDataClass.swift in Sources */,
 				B129B9852A31845B00E8C639 /* LabelText.swift in Sources */,
 				3793BC8F2A2F699C00A8E16B /* Patient.swift in Sources */,
 			);

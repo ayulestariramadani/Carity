@@ -21,4 +21,8 @@ enum LabelText: String, View, CaseIterable {
     var body: some View {
         Text(rawValue).foregroundColor(Color("tale_main"))
     }
+    
+    static func fromString(_ symbol: String) -> LabelText? {
+        return self.allCases.first { $0.rawValue == symbol }
+    }
 }

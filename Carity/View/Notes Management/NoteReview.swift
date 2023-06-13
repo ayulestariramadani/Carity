@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct NoteReview: View {
-    @StateObject var viewModel = ListNotesViewModel()
+//    @StateObject var viewModel = ListNotesViewModel()
+    @ObservedObject var viewModel: NoteViewModel
+    @Binding var patient : Patient?
+    @Binding var total_note : Int
     
     @State private var showDeleteNoteAlert : Bool = false
     //    @State private var deletedNote : IndexSet
@@ -32,7 +35,7 @@ struct NoteReview: View {
                 }
             }.foregroundColor(Color("dark"))
                 .navigationDestination(isPresented: $isNavigate){Notes(searchedText: "")}
-            ForEach(viewModel.notes,id:\.id) { note in
+            ForEach(viewModel.noteList,id:\.id) { note in
                 Button( action:{
                     //edit note
                 }){
@@ -45,7 +48,8 @@ struct NoteReview: View {
                     //                    } else {
                     //                        NoteCard(note_tittle: note.note_tittle, note_recordTime: note.note_recordTime, note_recordDate: note.note_recordDate, note_labelSFSymbol: note.note_labelSFSymbol, note_labelText: note.note_labelText, note_isReminded: note.note_isReminded)
                     //                    }
-                    NoteCard(note_tittle: note.note_tittle, note_recordTime: note.note_recordTime, note_recordDate: note.note_recordDate, note_labelSFSymbol: note.note_labelSFSymbol, note_labelText: note.note_labelText, note_isReminded: note.note_isReminded)
+                    // SAVED
+//                    NoteCard(note_tittle: note.note_tittle, note_recordTime: note.note_recordTime, note_recordDate: note.note_recordDate, note_labelSFSymbol: note.note_labelSFSymbol, note_labelText: note.note_labelText, note_isReminded: note.note_isReminded)
                     
                 }
             }

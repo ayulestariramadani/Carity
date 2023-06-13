@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Note: Identifiable {
+struct NoteDummy: Identifiable {
     var id = UUID()
     var note_tittle : String
     var note_recordTime : String

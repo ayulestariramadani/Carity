@@ -8,21 +8,26 @@
 import SwiftUI
 
 struct NoteList: View {
-    @StateObject var viewModel = ListNotesViewModel()
+//    @StateObject var viewModel = ListNotesViewModel()
+    @ObservedObject var viewModel: NoteViewModel
     
-    @Binding var searchedText : String
+//    @Binding var searchedText : String
     
     var body: some View {
         List{
-            ForEach(viewModel.notes,id:\.id) { note in
+            ForEach(viewModel.noteList, id:\.id) { note in
                 Button( action:{
                     //edit note
                 }){
-                    NoteCard(note_tittle: note.note_tittle, note_recordTime: note.note_recordTime, note_recordDate: note.note_recordDate, note_labelSFSymbol: note.note_labelSFSymbol, note_labelText: note.note_labelText, note_isReminded: note.note_isReminded)
+                    NoteCard(
+                        title: note.title!,
+                        labelSFSymbol: note.labelSFSymbol!,
+                        labelText: note.labelText!,
+                        isReminderActive: note.isReminderActive)
                 }
             }
         }.listStyle(.inset).cornerRadius(11).navigationBarTitle("Notes")
-            .searchable(text: $searchedText, prompt: "Search Note").autocorrectionDisabled(true)
+//            .searchable(text: $searchedText, prompt: "Search Note").autocorrectionDisabled(true)
     }
 }
 

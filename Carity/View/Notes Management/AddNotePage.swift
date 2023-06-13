@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct AddNotePage: View {
+    @ObservedObject var viewModel: NoteViewModel
+    
     @State private var isDateVisible = false
     @State private var isTimeVisible = false
-    @State private var note_tittle : String = ""
-    @State private var note : String = ""
+    @State private var title : String = ""
+    @State private var content : String = ""
     @State private var selectedDate = Date()
     @State private var selectedTime: Date = Date()
     @State private var isToggle = false
@@ -21,10 +23,13 @@ struct AddNotePage: View {
     @State private var isToggleCategory = false
     @State private var selectedCategory : String = ""
     
+    @State private var isReminderActive : Bool = false
+    
     @State var isSaved = false
     
-    @AppStorage("total_note")
-    var total_note: Int = 0
+//    @AppStorage("total_note")
+    @Binding var total_note: Int
+    
     
     
     let values: [String] = LabelText.allCases.map { $0.rawValue }
@@ -57,6 +62,21 @@ struct AddNotePage: View {
         }
     }
     
+    func saveNoteData() {
+        print("is saving..")
+        viewModel.addNote(
+            title: title,
+            content: content,
+            recordDate: Date.now,
+            recordTime: Date.now,
+            labelSFSymbol: icons[getIndex(label: selectedCategory)],
+            labelText: values[getIndex(label: selectedCategory)],
+            isReminderActive: isReminderActive,
+            reminderTime: selectedTime)
+        total_note = viewModel.noteList.count
+        print(viewModel.noteList.count)
+    }
+    
     var body: some View {
         ZStack {
             Color("mint").ignoresSafeArea()
@@ -70,7 +90,7 @@ struct AddNotePage: View {
                         HStack {
                             if selectedCategory == "" {
                                 Image(systemName: "tag.fill").foregroundColor(Color("tale_main"))
-                                Text("Choose Catagory")
+                                Text("Choose Category")
                             } else {
                                 let icon = icons[getIndex(label: selectedCategory)]
                                 Image(systemName: icon)
@@ -108,6 +128,7 @@ struct AddNotePage: View {
                     
                     if isToggle {
                         Button(action: {
+                            isReminderActive = true
                             withAnimation{
                                 isDateVisible.toggle()
                             }
@@ -159,21 +180,33 @@ struct AddNotePage: View {
                     }
                 }
                 Section {
-                    TextField("Title", text: $note_tittle, axis: .vertical).font(Font.system(.largeTitle)).fontWeight(.bold).foregroundColor(Color(labelColor(label: selectedCategory)))
-                    TextField("Note", text: $note, axis: .vertical)
+                    TextField("Title", text: $title, axis: .vertical).font(Font.system(.largeTitle)).fontWeight(.bold).foregroundColor(Color(labelColor(label: selectedCategory)))
+                    TextField("Note", text: $content, axis: .vertical)
                         .lineLimit(23, reservesSpace: true)
                 }.autocorrectionDisabled(true)
             }.pickerStyle(WheelPickerStyle())
-        }.background(Color("mint"))
-            .toolbar{
-                Button("Save"){
-                    self.isSaved.toggle()
-                    total_note = total_note + 1
-                   
-                }.navigationDestination(isPresented: $isSaved) {
-                    Dashboard()
-                }
+        }
+        .onAppear{
+//            total_note = viewModel.noteList.count
+//            print(total_note)
+            print(viewModel.patient?.nickname)
+        }
+        .background(Color("mint"))
+        .toolbar{
+            Button("Save"){
+                self.isSaved.toggle()
+//                    total_note = total_note + 1
+                saveNoteData()
             }
+//                .navigationDestination(isPresented: $isSaved) {
+//                    Dashboard()
+//                }
+        }
+        NavigationLink(destination: Dashboard(), isActive: $isSaved) {
+            EmptyView()
+        }
+        .hidden()
+
     }
     
     func formattedDate(_ date: Date) -> String {
