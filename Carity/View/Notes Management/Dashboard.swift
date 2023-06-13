@@ -68,7 +68,7 @@ struct Dashboard: View {
 //                        NoteReview(review_tittle: "Upcoming Notes", isThisWeek : false, isRemindedSoon : true
 //                                   //                               , searchedText: $searchedText
 //                        )
-                        NoteList(viewModel: NoteViewModel(patient: currentPatient ?? viewModel.patientList[0]))
+                        NoteList(viewModel: NoteViewModel(patient: currentPatient ?? viewModel.patientList[0]), total_note: $total_note)
                     }
                 }
                 .padding(.horizontal, 16.0).lineLimit(nil)

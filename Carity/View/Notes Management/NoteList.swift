@@ -10,7 +10,7 @@ import SwiftUI
 struct NoteList: View {
 //    @StateObject var viewModel = ListNotesViewModel()
     @ObservedObject var viewModel: NoteViewModel
-    
+    @Binding var total_note: Int
 //    @Binding var searchedText : String
     
     var body: some View {
@@ -26,8 +26,21 @@ struct NoteList: View {
                         isReminderActive: note.isReminderActive)
                 }
             }
-        }.listStyle(.inset).cornerRadius(11).navigationBarTitle("Notes")
+            .onDelete(perform: deleteNote)
+        }.listStyle(.inset).cornerRadius(11).navigationTitle("")
 //            .searchable(text: $searchedText, prompt: "Search Note").autocorrectionDisabled(true)
+    }
+    
+    func deleteNote(at offsets: IndexSet) {
+        // Get the notes to delete at the given offsets
+        let notesToDelete = offsets.map { viewModel.noteList[$0] }
+        
+        // Delete the notes
+        notesToDelete.forEach { note in
+            viewModel.deleteNote(note: note)
+        }
+        
+        total_note = viewModel.noteList.count
     }
 }
 

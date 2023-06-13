@@ -50,6 +50,17 @@ class NoteViewModel: ObservableObject {
         objectWillChange.send()
     }
     
+    func deleteNote(note: Note) {
+        guard let patient = patient else {
+            return
+        }
+        
+        patient.removeFromNotes(note)
+        viewContext.delete(note)
+        save()
+        fetchNotes()
+    }
+    
     func save() {
         do {
             try viewContext.save()
