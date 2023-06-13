@@ -18,6 +18,7 @@ struct NoteList: View {
             ForEach(viewModel.noteList, id:\.id) { note in
                 Button( action:{
                     //edit note
+                    print(note.isReminderActive)
                 }){
                     NoteCard(
                         title: note.title!,

@@ -17,8 +17,6 @@ struct NoteCard: View {
     var isReminderActive : Bool = true
     var reminderTime : Date = Date.now
     
-    var note_recordTime : String = ""
-    var note_recordDate : String = ""
     @State private var note_labelSFSymbol : LabelSFSymbol?
     @State private var note_labelText : LabelText?
     
@@ -39,7 +37,7 @@ struct NoteCard: View {
                         .font(.subheadline)
                 }
                 Spacer()
-                Text(note_recordTime).font(.caption2).fontWeight(.semibold)
+                Text(formattedTime(from:recordTime)).font(.caption2).fontWeight(.semibold)
             }
         }
         .padding(.horizontal, 8.0).frame(width: 358, height: 60).foregroundColor(Color("dark"))

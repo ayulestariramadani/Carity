@@ -125,10 +125,12 @@ struct AddNotePage: View {
                         Toggle("", isOn: $isToggle)
                             .padding()
                     }
+                    .onChange(of: isToggle) { newValue in
+                        isReminderActive = newValue
+                    }
                     
                     if isToggle {
                         Button(action: {
-                            isReminderActive = true
                             withAnimation{
                                 isDateVisible.toggle()
                             }
@@ -189,7 +191,7 @@ struct AddNotePage: View {
         .onAppear{
 //            total_note = viewModel.noteList.count
 //            print(total_note)
-            print(viewModel.patient?.nickname)
+//            print(viewModel.patient?.nickname)
         }
         .background(Color("mint"))
         .toolbar{
