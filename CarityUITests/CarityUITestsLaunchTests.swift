@@ -52,6 +52,8 @@ final class CarityUITestsLaunchTests: XCTestCase {
 
     func testAddPatientFormAppearance() throws {
         app.buttons["addPatient"].tap()
+        let addPatientTextField = app.textFields["nameTextField"]
+        XCTAssert(addPatientTextField.exists)
         
     }
     

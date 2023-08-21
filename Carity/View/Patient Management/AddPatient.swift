@@ -163,6 +163,7 @@ struct AddPatient: View {
                 Spacer()
                 List {
                     TextField("Nick name", text: $nickname)
+                        .accessibilityIdentifier("nameTextField")
                     TextField("Full name", text: $fullName)
                     
                     DatePicker(selection: $birthdate, in: ...Date.now, displayedComponents: .date) {
