@@ -9,8 +9,9 @@ import SwiftUI
 
 struct PatientList: View {
 //    @StateObject var viewModel = ListPatientViewModel()
-    @ObservedObject var viewModel: PatientViewModel
+    @StateObject var viewModel: PatientViewModel
     @Binding var currentPatient : Patient?
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         List{
@@ -18,6 +19,7 @@ struct PatientList: View {
                 Button( action:{
                     //choose patient
                     currentPatient = patient
+                    presentationMode.wrappedValue.dismiss()
                 }){
                     PatientCard(image: "patient", nickName: patient.nickname!, disease: patient.disease!)
                 }

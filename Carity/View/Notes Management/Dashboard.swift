@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct Dashboard: View {
-    @ObservedObject var viewModel: PatientViewModel
+//    @ObservedObject var viewModel: PatientViewModel
+    @StateObject var viewModel = PatientViewModel()
 //    @ObservedObject var noteViewModel: NoteViewModel
     @State private var currentPatient: Patient?
     
@@ -31,7 +32,7 @@ struct Dashboard: View {
     @State private var showDeletePatientAlert : Bool = false
     
     init() {
-        self.viewModel = PatientViewModel()
+//        self.viewModel = PatientViewModel()
         total_note = 0
     }
 
@@ -41,7 +42,10 @@ struct Dashboard: View {
                 Color("mint").ignoresSafeArea()
                 VStack{
                     HStack{
-                        Text("Hi, \(caregiver_firstname)").font(.largeTitle.bold()).foregroundColor(Color("dark"))
+                        Text("Hi, \(caregiver_firstname)")
+                            .accessibilityIdentifier("dashboardNavBarTitle")
+                            .font(.largeTitle.bold()).foregroundColor(Color("dark"))
+                            
                         Spacer()
                     }
                     Spacer(minLength: 11)

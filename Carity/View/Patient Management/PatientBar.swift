@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PatientBar: View {
-    @ObservedObject var viewModel = PatientViewModel()
+    @StateObject var viewModel = PatientViewModel()
     
     @State private var showSheetOfEditPatient : Bool = false
     @State private var showSheetOfListPatients : Bool = false
@@ -124,7 +124,9 @@ struct PatientBar: View {
                     self.addPatientIsPresented.toggle()
                 }){
                     Label("Add Patient", systemImage: "plus")
-                }.frame(minWidth: 100, maxWidth: 128, minHeight: 28, maxHeight: 28).background(Color("tale_main")).foregroundColor(Color("white"))
+                }
+                .accessibilityIdentifier("addPatient")
+                .frame(minWidth: 100, maxWidth: 128, minHeight: 28, maxHeight: 28).background(Color("tale_main")).foregroundColor(Color("white"))
                     .clipShape(RoundedRectangle(cornerRadius: 11))
                     .sheet(isPresented: $addPatientIsPresented){
                         AddPatient(viewModel: PatientViewModel())
@@ -134,7 +136,9 @@ struct PatientBar: View {
                     showSheetOfListPatients.toggle()
                 }){
                     Label("Switch", systemImage: "rectangle.2.swap")
-                }.frame(minWidth: 100, maxWidth: 128, minHeight: 28, maxHeight: 28).background(Color("sand_main")).foregroundColor(Color("dark"))
+                }
+                .accessibilityIdentifier("switchPatient")
+                .frame(minWidth: 100, maxWidth: 128, minHeight: 28, maxHeight: 28).background(Color("sand_main")).foregroundColor(Color("dark"))
                     .clipShape(RoundedRectangle(cornerRadius: 11))
                     .sheet(isPresented: $showSheetOfListPatients){
                         PatientList(viewModel: viewModel, currentPatient: $currentPatient)

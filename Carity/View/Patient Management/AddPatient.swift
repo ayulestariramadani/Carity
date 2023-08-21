@@ -18,7 +18,8 @@ struct AddPatient: View {
     //            nf.maximumFractionDigits = 2
     //            return nf
     //        }()
-    @ObservedObject var viewModel: PatientViewModel
+    @StateObject var viewModel: PatientViewModel
+    @Environment(\.presentationMode) var presentationMode
     
     @State var nickname: String = ""
     @State var fullName: String = ""
@@ -129,6 +130,7 @@ struct AddPatient: View {
                             updatePatientData()
                         }
                         self.isSaved.toggle()
+                        presentationMode.wrappedValue.dismiss()
                     }.navigationDestination(isPresented: $isSaved) {
                         Dashboard()
                     }
