@@ -24,7 +24,7 @@ struct NoteList: View {
                         labelSFSymbol: note.labelSFSymbol!,
                         labelText: note.labelText!,
                         isReminderActive: note.isReminderActive)
-                }
+                }.accessibilityIdentifier("noteList")
             }
             .onDelete(perform: deleteNote)
         }.listStyle(.inset).cornerRadius(11).navigationTitle("")

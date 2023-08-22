@@ -22,7 +22,7 @@ struct PatientList: View {
                     presentationMode.wrappedValue.dismiss()
                 }){
                     PatientCard(image: "patient", nickName: patient.nickname!, disease: patient.disease!)
-                }
+                }.accessibilityIdentifier("listPatient")
             }
         }.listStyle(.inset).cornerRadius(11).navigationBarTitle("Patients")
     }

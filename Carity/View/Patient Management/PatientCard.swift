@@ -19,7 +19,9 @@ struct PatientCard: View {
                 .clipShape(Circle())
             VStack{
                 HStack(alignment: .bottom){
-                    Text(nickName).foregroundColor(Color("dark")).lineLimit(nil)
+                    Text(nickName)
+                        .accessibilityIdentifier("patientNameInCard")
+                        .foregroundColor(Color("dark")).lineLimit(nil)
                     Spacer()
                     
                 }.font(.body).fontWeight(/*@START_MENU_TOKEN@*/.semibold/*@END_MENU_TOKEN@*/)

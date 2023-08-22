@@ -84,7 +84,9 @@ struct PatientBar: View {
         } primaryAction: {
             showSheetOfEditPatient.toggle()
 //            editPatientIsPresented.toggle()
-        }.sheet(isPresented: $showSheetOfEditPatient){
+        }
+        .accessibilityIdentifier("patientCard")
+        .sheet(isPresented: $showSheetOfEditPatient){
             AddPatient(
                 viewModel: PatientViewModel(),
                 nickname: currentPatient?.nickname ?? "",

@@ -58,7 +58,9 @@ struct Dashboard: View {
                     if total_note == 0 {
                         Button("\(Image(systemName: "square.and.pencil")) Add Note", action: {
                             isNavigate.toggle()
-                        }).font(.body).fontWeight(.semibold).frame(minWidth: 358, maxWidth: 398, minHeight: 60, maxHeight: 60).background(Color("white")).foregroundColor(Color("dark"))
+                        })
+                        .accessibilityIdentifier("addNote")
+                        .font(.body).fontWeight(.semibold).frame(minWidth: 358, maxWidth: 398, minHeight: 60, maxHeight: 60).background(Color("white")).foregroundColor(Color("dark"))
                             .clipShape(RoundedRectangle(cornerRadius: 11))
                         
                         List{
@@ -97,7 +99,9 @@ struct Dashboard: View {
                         }){
                             Image(systemName: "square.and.pencil")
                             Text("Add Note")
-                        }.frame(minWidth: 100, maxWidth: 128, minHeight: 40, maxHeight: 45)
+                        }
+                        .accessibilityIdentifier("addNote")
+                        .frame(minWidth: 100, maxWidth: 128, minHeight: 40, maxHeight: 45)
                             .foregroundColor(Color("tale_main"))
                             .clipShape(RoundedRectangle(cornerRadius: 11))
                             .font(.subheadline).fontWeight(.bold)

@@ -57,11 +57,31 @@ final class CarityUITestsLaunchTests: XCTestCase {
         
     }
     
-    func testClickPatientCard() throws {
-        
+    func testListPatientAppearance() throws {
+        app.buttons["switchPatient"].tap()
+        let listPatient = app.staticTexts.element
+        XCTAssert(listPatient.exists)
     }
     
-    func testAddNote() throws {
-        
+    func testPatientCardAppearance() throws {
+        let patientNameInCard = app.staticTexts.element
+        XCTAssertTrue(patientNameInCard.exists)
+    }
+    
+    func testNoteList() throws{
+        let noteList = app.staticTexts.element
+        XCTAssertTrue(noteList.exists)
+    }
+    
+    func testUpdatePatientFormAppearance() throws {
+        app.buttons["patientCard"].tap()
+        let editPatientTextField = app.textFields["nameTextField"]
+        XCTAssert(editPatientTextField.exists)
+    }
+    
+    func testAddNoteFormAppearance() throws {
+        app.buttons["addNote"].tap()
+        let addNoteForm = app.staticTexts.element
+        XCTAssert(addNoteForm.exists)
     }
 }

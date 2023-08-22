@@ -180,7 +180,9 @@ struct AddNotePage: View {
                     }
                 }
                 Section {
-                    TextField("Title", text: $title, axis: .vertical).font(Font.system(.largeTitle)).fontWeight(.bold).foregroundColor(Color(labelColor(label: selectedCategory)))
+                    TextField("Title", text: $title, axis: .vertical)
+                        .accessibilityIdentifier("addNoteForm")
+                        .font(Font.system(.largeTitle)).fontWeight(.bold).foregroundColor(Color(labelColor(label: selectedCategory)))
                     TextField("Note", text: $content, axis: .vertical)
                         .lineLimit(23, reservesSpace: true)
                 }.autocorrectionDisabled(true)
